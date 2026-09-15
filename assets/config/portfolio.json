@@ -1,0 +1,654 @@
+{
+  "metaTitle": "Suhail Shabir | Mobile Application Developer (iOS & Flutter)",
+  "metaDescription": "Portfolio of Suhail Shabir, Mobile Application Developer with 10+ years of experience architecting enterprise mobile solutions in iOS, Flutter, Swift, and Dart.",
+  "sectionConfig": {
+    "showHero": true,
+    "showAbout": true,
+    "showHighlights": true,
+    "showExperience": true,
+    "showProjects": true,
+    "showSkills": true,
+    "showImpact": true,
+    "showEducation": true,
+    "showCertifications": true,
+    "showContact": true
+  },
+  "personalInfo": {
+    "name": "Suhail Shabir",
+    "title": "Mobile Application Developer (iOS & Flutter)",
+    "tagline": "Architecting High-Impact, Scalable Mobile Solutions for 10+ Years",
+    "location": "New Delhi, India",
+    "email": "suhail7.dev@gmail.com",
+    "phone": "+91 7006401172",
+    "totalExperience": "10 Years in Mobile Development",
+    "professionalSummary": "Innovative, visionary, and results-driven iOS & Mobile Application Developer with over 10 years of experience designing, architecting, and delivering high-impact mobile solutions. I specialize in native iOS development using Swift and SwiftUI, building elegant, scalable, and high-performance applications, with strong experience in Flutter for cross-platform delivery across iOS and Android from a single maintainable codebase. My approach blends technical mastery with creative problem-solving, ensuring every product is scalable, intuitive, and aligned with business goals.",
+    "highlights": [
+      "Expert-level proficiency in Swift, SwiftUI, Flutter, Dart and mobile architecture",
+      "Strong eye for UI/UX design, performance optimisation, and accessibility",
+      "Proven leadership in cross-functional teams and client-facing roles",
+      "Deep integration experience with REST APIs, Firebase, and third-party SDKs",
+      "Agile mindset with a passion for innovation and continuous improvement"
+    ],
+    "professionalDevelopmentSummary": "This portfolio reflects over a decade of unwavering dedication to mobile application development, marked by deep technical expertise, strategic innovation, and consistent delivery of enterprise-grade solutions. My career trajectory showcases a dynamic evolution—from a hands-on developer to a trusted technical leader—with a proven ability to drive complex projects from concept to launch.\n\nI’ve successfully engineered and delivered transformative mobile experiences for industry-leading clients such as Liverpool (Mexico), Walmart, DHL, and Cognizant, spanning diverse sectors including retail, healthcare, and fintech. My journey is defined by a commitment to excellence, continuous learning, and a passion for building scalable, user-centric applications that solve real-world problems.",
+    "profileImageUrl": "assets/images/profile.jpeg",
+    "resumeDownloadUrl": "assets/resume/Suhail_Shabir.docx"
+  },
+  "navigationItems": [
+    {
+      "label": "About",
+      "sectionKey": "about"
+    },
+    {
+      "label": "Experience",
+      "sectionKey": "experience"
+    },
+    {
+      "label": "Projects",
+      "sectionKey": "projects"
+    },
+    {
+      "label": "Skills",
+      "sectionKey": "skills"
+    },
+    {
+      "label": "Impact",
+      "sectionKey": "impact"
+    },
+    {
+      "label": "Education",
+      "sectionKey": "education"
+    },
+    {
+      "label": "Contact",
+      "sectionKey": "contact"
+    }
+  ],
+  "socialLinks": [
+    {
+      "label": "Email",
+      "url": "mailto:suhail7.dev@gmail.com",
+      "iconKey": "email"
+    },
+    {
+      "label": "Phone",
+      "url": "tel:+917006401172",
+      "iconKey": "phone"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/suhail7cb",
+      "iconKey": "github"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/suhailshabir/",
+      "iconKey": "linkedin"
+    }
+  ],
+  "experiences": [
+    {
+      "role": "Technology Specialist",
+      "company": "Cognizant",
+      "location": "Noida, India",
+      "period": "June 2025 – Present",
+      "durationText": "Current",
+      "isCurrent": true,
+      "responsibilities": [
+        "Mobile application development for enterprise clients",
+        "Managed and mentored development teams ensuring code quality",
+        "Handle client interfaces and requirement gathering",
+        "Team collaboration and comprehensive code review processes",
+        "Cross-platform solution design and implementation",
+        "Advanced mobile application development and architecture"
+      ]
+    },
+    {
+      "role": "Lead Engineer",
+      "company": "DLT Labs",
+      "location": "Noida, India",
+      "period": "Feb 2019 – June 2025",
+      "durationText": "6 years 5 months",
+      "isCurrent": false,
+      "responsibilities": [
+        "Led full-cycle Mobile app development.",
+        "Managed and mentored development teams ensuring code quality",
+        "Handled client interfaces and requirement gathering",
+        "Delivered complex projects on time with high quality standards"
+      ]
+    },
+    {
+      "role": "Senior Software Engineer",
+      "company": "Mobile Programming Ltd",
+      "location": "Gurugram, India",
+      "period": "April 2016 – March 2019",
+      "durationText": "2 years 10 months",
+      "isCurrent": false,
+      "responsibilities": [
+        "Mobile application development for iOS and Android platforms",
+        "API integration and database management solutions",
+        "Client project delivery and support",
+        "User interface design and performance optimization"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Code Brew Labs",
+      "location": "Chandigarh, India",
+      "period": "Nov 2015 – March 2016",
+      "durationText": "4 months 22 days",
+      "isCurrent": false,
+      "responsibilities": [
+        "Native iOS application development",
+        "Foundation building in mobile programming concepts",
+        "Client project delivery and quality assurance",
+        "Early career skill development and growth"
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Retisense Tech India Private Ltd",
+      "location": "Bengaluru, India",
+      "period": "Feb 2015 – Nov 2016",
+      "durationText": "9 months 5 days",
+      "isCurrent": false,
+      "responsibilities": [
+        "Native iOS application development",
+        "Foundation building in mobile programming concepts",
+        "Client project delivery and quality assurance",
+        "Early career skill development and growth"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Click & Collect",
+      "client": "Liverpool (Mexico) for internal users",
+      "duration": "6 Months",
+      "isFeatured": true,
+      "category": "Retail & Logistics",
+      "overview": "The platform that allows users to buy products in-store or online and pick them up at the Liverpool store of choice, being the most convenient way to receive purchases according to users availability.",
+      "features": [
+        "Click & Collect appointments: Skip the lines! Schedule an appointment to pick up your order at participating stores via confirmation email or My Purchases and save time.",
+        "Pick up in your car: Receive your purchases from the comfort of your car (depending on service availability).",
+        "Activate Flash: Choose Express Pickup to collect in two hours or Express Delivery to receive on the same day.",
+        "Pick up in 2 hours or same day of purchase in store: Collection time assigned after payment processing with email notification."
+      ],
+      "userPersonas": [
+        "Asesor / Sales Associate",
+        "Bodega / Warehouse",
+        "Asesor Bodega / Warehouse Associate"
+      ],
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "iOS",
+        "REST APIs",
+        "Mobile Architecture"
+      ],
+      "platforms": [
+        "Mobile (Internal Enterprise)"
+      ],
+      "links": {
+        "web": null,
+        "android": null,
+        "ios": null,
+        "github": null
+      }
+    },
+    {
+      "title": "Liverpool: Shop online iOS",
+      "client": "Liverpool (Mexico)",
+      "duration": "6 Months",
+      "isFeatured": true,
+      "category": "E-Commerce",
+      "overview": "Official iOS shopping application for Liverpool, one of Mexico’s largest department stores. Designed exclusively for iPhone, this app enables users to securely browse, discover, and purchase a wide range of products—from fashion and electronics to home goods—directly from their device. It delivers a seamless mobile shopping experience that integrates key retail services such as free shipping, in-store pickup, and comprehensive account management features.",
+      "features": [
+        "Secure & Intuitive Shopping – Explore thousands of products across categories and brands with clean navigation.",
+        "Free Shipping – Offers free shipping on eligible purchases straight to the user’s location.",
+        "Click & Collect – Customers can order online and pick up at the nearest store for added convenience.",
+        "Easy Returns (Garantía Liverpool) – Built-in support for returns and guarantees to enhance customer satisfaction.",
+        "Wishlist & Notifications – Save favorites and receive push notifications for exclusive sales (Buen Fin, Hot Sale, Cyber Monday).",
+        "Wide Product Variety – Fashion, technology brands (Apple, Samsung, Nintendo), home essentials, and more."
+      ],
+      "userPersonas": [],
+      "technologies": [
+        "Swift",
+        "SwiftUI",
+        "iOS Native",
+        "REST APIs",
+        "Push Notifications"
+      ],
+      "platforms": [
+        "iOS App Store"
+      ],
+      "links": {
+        "web": "https://www.liverpool.com.mx",
+        "android": null,
+        "ios": "https://apps.apple.com/mx/app/liverpool-pocket/id495924765",
+        "github": null
+      }
+    },
+    {
+      "title": "SDS Slot Delivery Scheduler App",
+      "client": "Walmart Internal System",
+      "duration": "14 Months",
+      "isFeatured": true,
+      "category": "Enterprise Logistics",
+      "overview": "Innovative delivery slot scheduling application designed to eliminate congestion at retail stores and optimize vendor deliveries across Walmart internal systems.",
+      "features": [
+        "Vendors: Browse available delivery slots, book appointments, and receive real-time notifications.",
+        "Store Managers: Comprehensive visibility into scheduled deliveries, monitor real-time delivery flow.",
+        "Impact: Successfully deployed across Walmart’s internal systems, significantly reducing wait times and eliminating scheduling conflicts."
+      ],
+      "userPersonas": [
+        "Vendors",
+        "Store Managers"
+      ],
+      "technologies": [
+        "Flutter",
+        "Cross-platform",
+        "REST APIs",
+        "Enterprise Architecture"
+      ],
+      "platforms": [
+        "Enterprise Mobile System"
+      ],
+      "links": {
+        "web": null,
+        "android": null,
+        "ios": null,
+        "github": null
+      }
+    },
+    {
+      "title": "Asset Track™",
+      "client": "DLT Labs Enterprise Solution",
+      "duration": "45 Months",
+      "isFeatured": true,
+      "category": "Blockchain & Enterprise",
+      "overview": "The Asset Track™ Mobile app allows end users to view and interact with a workflow from their mobile device. View dashboards and KPIs, add value to the workflow, and receive notifications and alerts backed by blockchain technology.",
+      "features": [
+        "Comprehensive workflow management",
+        "Real-time push notifications",
+        "Blockchain technology integration",
+        "Secure, transparent, and tamper-proof asset tracking"
+      ],
+      "userPersonas": [],
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "iOS",
+        "Android",
+        "Blockchain Integration",
+        "Push Alerts"
+      ],
+      "platforms": [
+        "iOS App Store",
+        "Google Play Store"
+      ],
+      "links": {
+        "web": null,
+        "android": "https://play.google.com/store/apps",
+        "ios": "https://apps.apple.com",
+        "github": null
+      }
+    },
+    {
+      "title": "DL Wallet™",
+      "client": "DLT Labs™",
+      "duration": "15 Months",
+      "isFeatured": true,
+      "category": "Fintech & Blockchain",
+      "overview": "Multi-dimensional solution presented by DLT Labs™ encompassing core e-wallet features including the creation of fiat and crypto accounts, sending and receiving between users, and moving currencies in and out of the wallet. Equipped with QR codes and NFC capabilities for redemption at Point-of-Sale.",
+      "features": [
+        "Fiat and cryptocurrency account management",
+        "Send and receive funds seamlessly",
+        "Credit/debit card integration",
+        "QR code and NFC capabilities for POS redemptions",
+        "Immutable blockchain ledger",
+        "Digital document identity management"
+      ],
+      "userPersonas": [],
+      "technologies": [
+        "iOS",
+        "Android",
+        "Blockchain Ledger",
+        "NFC",
+        "QR Code",
+        "Payment Gateways"
+      ],
+      "platforms": [
+        "iOS App Store",
+        "Google Play Store"
+      ],
+      "links": {
+        "web": null,
+        "android": "https://play.google.com/store/apps",
+        "ios": "https://apps.apple.com",
+        "github": null
+      }
+    },
+    {
+      "title": "MIA Multilingual Interpretation App",
+      "client": null,
+      "duration": "Multi-Month",
+      "isFeatured": false,
+      "category": "Real-time Communication",
+      "overview": "Real-time translation services through professional interpreters with audio/video chat capabilities and flexible payment options including cryptocurrency support.",
+      "features": [
+        "Real-time translation services through professional human interpreters",
+        "Integrated audio and video chat capabilities",
+        "Flexible multi-currency payment options including cryptocurrency support",
+        "Built with an agile team of 3 specialized developers"
+      ],
+      "userPersonas": [],
+      "technologies": [
+        "iOS Native",
+        "Audio/Video Streaming",
+        "Crypto Payments",
+        "WebRTC"
+      ],
+      "platforms": [
+        "iOS"
+      ],
+      "links": {
+        "web": null,
+        "android": null,
+        "ios": null,
+        "github": null
+      }
+    },
+    {
+      "title": "Stridalyzer - Smart Running Analysis",
+      "client": null,
+      "duration": "Multi-Month",
+      "isFeatured": false,
+      "category": "Health & IoT",
+      "overview": "Breakthrough running analysis application working with smart insoles to help runners understand form, improve performance, and prevent injuries through advanced analytics.",
+      "features": [
+        "Connects wirelessly with pressure-sensing smart insoles",
+        "Live biomechanical running form tracking and stride analysis",
+        "Predictive injury prevention and customized coaching metrics"
+      ],
+      "userPersonas": [],
+      "technologies": [
+        "iOS",
+        "Bluetooth LE",
+        "Hardware Sensors",
+        "Data Analytics"
+      ],
+      "platforms": [
+        "iOS App Store"
+      ],
+      "links": {
+        "web": null,
+        "android": null,
+        "ios": "https://apps.apple.com",
+        "github": null
+      }
+    },
+    {
+      "title": "ASPENRx Health",
+      "client": null,
+      "duration": "10 Months",
+      "isFeatured": false,
+      "category": "Healthcare",
+      "overview": "Revolutionary healthcare application bridging pharmacists and communities for consultations, prescriptions, and health management.",
+      "features": [
+        "Secure community-to-pharmacist communication channels",
+        "Prescription tracking and medication advisory workflows",
+        "HIPAA/patient privacy compliance design"
+      ],
+      "userPersonas": [],
+      "technologies": [
+        "Mobile Healthcare",
+        "iOS",
+        "Secure REST APIs"
+      ],
+      "platforms": [
+        "Healthcare Mobile App"
+      ],
+      "links": {
+        "web": null,
+        "android": null,
+        "ios": null,
+        "github": null
+      }
+    },
+    {
+      "title": "Gleam Music Community",
+      "client": null,
+      "duration": "Multi-Month",
+      "isFeatured": false,
+      "category": "Media & Community",
+      "overview": "Comprehensive community platform designed for electronic music professionals with integrated music discovery features and event management capabilities.",
+      "features": [
+        "Targeted music discovery and track streaming for electronic musicians",
+        "Integrated event schedules, tickets, and artist management",
+        "Interactive social feed and community messaging"
+      ],
+      "userPersonas": [],
+      "technologies": [
+        "iOS SDK",
+        "Audio Streaming",
+        "Event Management",
+        "Social APIs"
+      ],
+      "platforms": [
+        "iOS App Store"
+      ],
+      "links": {
+        "web": null,
+        "android": null,
+        "ios": "https://apps.apple.com",
+        "github": null
+      }
+    }
+  ],
+  "skillGroups": [
+    {
+      "categoryName": "Core Technologies",
+      "description": "Languages, framework paradigms, and multi-platform foundations",
+      "skills": [
+        {
+          "name": "Swift",
+          "level": "Expert"
+        },
+        {
+          "name": "SwiftUI",
+          "level": "Expert"
+        },
+        {
+          "name": "Objective-C",
+          "level": "Advanced"
+        },
+        {
+          "name": "Dart",
+          "level": "Expert"
+        },
+        {
+          "name": "Flutter Framework",
+          "level": "Expert"
+        },
+        {
+          "name": "iOS Native Development",
+          "level": "Expert"
+        },
+        {
+          "name": "Cross-platform Mobile Development",
+          "level": "Expert"
+        },
+        {
+          "name": "Mobile Architecture (Clean/MVVM/BLoC)",
+          "level": "Expert"
+        }
+      ]
+    },
+    {
+      "categoryName": "Development Tools & Services",
+      "description": "IDEs, toolchains, CI/CD, and backend cloud integrations",
+      "skills": [
+        {
+          "name": "Xcode",
+          "level": "Expert"
+        },
+        {
+          "name": "Android Studio",
+          "level": "Advanced"
+        },
+        {
+          "name": "VS Code",
+          "level": "Advanced"
+        },
+        {
+          "name": "Git & Version Control",
+          "level": "Expert"
+        },
+        {
+          "name": "Firebase Suite",
+          "level": "Advanced"
+        },
+        {
+          "name": "RESTful APIs & JSON Integration",
+          "level": "Expert"
+        },
+        {
+          "name": "Third-party SDK Integration",
+          "level": "Expert"
+        }
+      ]
+    },
+    {
+      "categoryName": "Leadership & Management",
+      "description": "Team mentorship, delivery execution, and client management",
+      "skills": [
+        {
+          "name": "Development Team Leadership",
+          "level": "Experienced"
+        },
+        {
+          "name": "Full-Cycle Project Delivery",
+          "level": "Expert"
+        },
+        {
+          "name": "Client Interface & Requirements Gathering",
+          "level": "Expert"
+        },
+        {
+          "name": "Code Review & Engineering Quality Standards",
+          "level": "Expert"
+        },
+        {
+          "name": "Cross-functional Team Mentorship",
+          "level": "Experienced"
+        },
+        {
+          "name": "Agile & Scrum Practices",
+          "level": "Expert"
+        }
+      ]
+    },
+    {
+      "categoryName": "Advanced Specializations",
+      "description": "High-performance real-time networks, security, and fintech",
+      "skills": [
+        {
+          "name": "Real-time Communication Systems",
+          "level": "Advanced"
+        },
+        {
+          "name": "Security Implementation & Cryptography",
+          "level": "Advanced"
+        },
+        {
+          "name": "Payment Gateway Integration",
+          "level": "Advanced"
+        },
+        {
+          "name": "Blockchain Ledger Integration",
+          "level": "Advanced"
+        },
+        {
+          "name": "Performance Optimization & Accessibility",
+          "level": "Expert"
+        },
+        {
+          "name": "NFC & QR Code POS Operations",
+          "level": "Advanced"
+        }
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Enterprise Leadership",
+      "description": "Led end-to-end Flutter development for high-profile enterprise clients including Walmart, DHL, and Bombay Stock Exchange (BSE). Delivered scalable, high-performance mobile solutions aligned with business goals and user needs.",
+      "metricBadge": "Walmart • DHL • BSE",
+      "iconName": "corporate_fare"
+    },
+    {
+      "title": "Team Excellence",
+      "description": "Managed and mentored cross-functional development teams, fostering a culture of code quality, agile practices, and timely delivery. Championed best practices in CI/CD, code reviews, and performance optimization.",
+      "metricBadge": "Quality & Mentorship",
+      "iconName": "groups"
+    },
+    {
+      "title": "Innovation & Design",
+      "description": "Architected and implemented user-centric features tailored to diverse personas and platforms. Focused on delivering intuitive, visually engaging, and accessible mobile experiences that drive user engagement.",
+      "metricBadge": "UI/UX & Persona Design",
+      "iconName": "design_services"
+    },
+    {
+      "title": "Security Pioneer",
+      "description": "Engineered secure financial systems leveraging blockchain technology, ensuring tamper-proof transactions, data integrity, and transparent operations. Played a key role in integrating advanced security protocols into mobile workflows.",
+      "metricBadge": "Blockchain & Integrity",
+      "iconName": "shield"
+    },
+    {
+      "title": "System Architecture",
+      "description": "Designed and developed robust system architectures for real-time communication, workflow automation, and enterprise mobility. Delivered solutions that are scalable, maintainable, and performance optimized.",
+      "metricBadge": "Scalable Systems",
+      "iconName": "hub"
+    },
+    {
+      "title": "Client Success",
+      "description": "Acted as a strategic interface between clients and development teams. Led requirement gathering, solution design, and release management for enterprise-grade applications, ensuring stakeholder satisfaction and project success.",
+      "metricBadge": "Client Partnerships",
+      "iconName": "verified"
+    }
+  ],
+  "education": [
+    {
+      "degree": "BCA Computer Science",
+      "institution": "Kashmir University",
+      "year": "2014",
+      "details": "Bachelor’s degree in computer applications with specialization in Computer Science fundamentals, programming concepts, and software development methodologies."
+    },
+    {
+      "degree": "XIIth - Commerce",
+      "institution": "J & K Board",
+      "year": "2010",
+      "details": "Higher Secondary Education in Commerce stream, providing strong analytical and mathematical foundation for technology career."
+    }
+  ],
+  "certifications": [
+    {
+      "title": "AI Agents for Software Engineering",
+      "description": "Explored autonomous agents and their role in enhancing software development workflows.",
+      "issuer": "AI Certification Program",
+      "credentialUrl": null
+    },
+    {
+      "title": "Generative AI for Software Engineers",
+      "description": "Gained hands-on experience in integrating generative AI into mobile and backend systems.",
+      "issuer": "AI Certification Program",
+      "credentialUrl": null
+    },
+    {
+      "title": "GitHub Copilot: AI for Coding & Development",
+      "description": "Mastered AI-assisted coding techniques to boost productivity and code quality.",
+      "issuer": "GitHub / Microsoft",
+      "credentialUrl": null
+    }
+  ]
+}
