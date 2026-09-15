@@ -3,7 +3,12 @@
 *.log
 *.pyc
 *.swp
+*.swo
+*~
 .DS_Store
+._*
+.Spotlight-V100
+.Trashes
 .atom/
 .build/
 .buildlog/
@@ -12,18 +17,16 @@
 .swiftpm/
 migrate_working_dir/
 
-# IntelliJ related
+# IntelliJ / Android Studio
 *.iml
 *.ipr
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# Visual Studio Code
+.vscode/
 
-# Flutter/Dart/Pub related
+# Flutter / Dart / Pub related
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
@@ -33,13 +36,40 @@ migrate_working_dir/
 .pub/
 /build/
 
-# Symbolication related
-app.*.symbols
+# Web / Static Hosting artifacts
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+.vercel/
+.netlify/
 
-# Obfuscation related
+# Environment and secrets
+.env*
+!.env.example
+
+# Symbolication and Obfuscation
+app.*.symbols
 app.*.map.json
 
-# Android Studio will place build artifacts here
+# Android Studio / Gradle artifacts
 /android/app/debug
 /android/app/profile
 /android/app/release
+.gradle/
+**/android/captures/
+**/android/.gradle
+**/android/local.properties
+**/android/**/build/
+
+# iOS / Xcode
+**/ios/**/build/
+**/ios/**/DerivedData/
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/profile
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
