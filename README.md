@@ -1,6 +1,11 @@
 # 🚀 Personal Portfolio Website — Flutter Web
 
+[![Firebase Hosting](https://img.shields.io/badge/Live%20Demo-Firebase%20Hosting-orange?logo=firebase&style=flat-square)](https://suhail-shabir-portfolio.web.app)
+[![Flutter](https://img.shields.io/badge/Flutter-Web-02569B?logo=flutter&style=flat-square)](https://flutter.dev)
+
 A modern, production-grade, and highly configurable personal portfolio website built with **Flutter Web**, **Clean Architecture**, and **Flutter BLoC/Cubit**.
+
+**Live URL**: [https://suhail-shabir-portfolio.web.app](https://suhail-shabir-portfolio.web.app)
 
 This project is engineered not only as a personal portfolio, but as a **reusable portfolio engine** that any developer, designer, or technical professional can adopt simply by editing an external JSON file—**without writing a single line of Dart code**.
 
