@@ -1,0 +1,81 @@
+{
+  "metaTitle": "Jane Doe | Mobile Application Architect",
+  "metaDescription": "Personal portfolio showcasing mobile engineering, Flutter architecture, and enterprise apps.",
+  "sectionConfig": {
+    "showSummary": true,
+    "showSkills": true,
+    "showExperience": true,
+    "showProjects": true,
+    "showEducation": true,
+    "showCertifications": true,
+    "showAchievements": true,
+    "showContact": true
+  },
+  "navigationItems": [
+    { "label": "About", "sectionKey": "summary" },
+    { "label": "Skills", "sectionKey": "skills" },
+    { "label": "Experience", "sectionKey": "experience" },
+    { "label": "Projects", "sectionKey": "projects" },
+    { "label": "Contact", "sectionKey": "contact" }
+  ],
+  "personalInfo": {
+    "name": "Jane Doe",
+    "title": "Staff Mobile Engineer (iOS & Flutter)",
+    "tagline": "Architecting resilient, production-scale mobile applications across platforms.",
+    "email": "jane.doe@example.com",
+    "phone": "+1 (555) 019-2834",
+    "location": "San Francisco, CA",
+    "avatarAsset": "assets/images/profile.png",
+    "summary": "Accomplished mobile software engineer specializing in cross-platform Flutter architecture, native iOS performance, and developer tooling."
+  },
+  "socialLinks": [
+    { "platform": "github", "url": "https://github.com/example", "label": "GitHub" },
+    { "platform": "linkedin", "url": "https://linkedin.com/in/example", "label": "LinkedIn" },
+    { "platform": "email", "url": "mailto:jane.doe@example.com", "label": "Email" }
+  ],
+  "experiences": [
+    {
+      "company": "Tech Corp",
+      "role": "Staff Mobile Engineer",
+      "duration": "2022 - Present",
+      "location": "San Francisco, CA",
+      "isCurrent": true,
+      "bullets": [
+        "Led mobile architecture redesign serving 1M+ active users.",
+        "Introduced automated CI/CD reducing release cycle by 50%."
+      ],
+      "technologies": ["Flutter", "Dart", "Swift", "CI/CD"]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Mobile App Example",
+      "tagline": "High-performance enterprise utility",
+      "description": "A cross-platform mobile app built using Clean Architecture and state management.",
+      "category": "Flutter",
+      "technologies": ["Flutter", "Dart", "Firebase"],
+      "metrics": ["500K+ Downloads", "4.8★ Rating"],
+      "links": {
+        "github": "https://github.com/example/app"
+      }
+    }
+  ],
+  "skillGroups": [
+    {
+      "category": "Mobile Technologies",
+      "skills": [
+        { "name": "Flutter & Dart", "level": "Expert" },
+        { "name": "iOS (Swift / SwiftUI)", "level": "Advanced" }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.S. in Computer Science",
+      "institution": "University of Technology",
+      "duration": "2014 - 2018"
+    }
+  ],
+  "certifications": [],
+  "achievements": []
+}

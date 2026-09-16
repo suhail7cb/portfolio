@@ -21,6 +21,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Inject Private Portfolio Data
+        env:
+          PORTFOLIO_CONFIG_BASE64: ${{ secrets.PORTFOLIO_CONFIG_BASE64 }}
+        run: |
+          mkdir -p assets/config
+          if [ -n "$PORTFOLIO_CONFIG_BASE64" ]; then
+            echo "Injecting portfolio configuration from GitHub secret..."
+            echo "$PORTFOLIO_CONFIG_BASE64" | base64 --decode > assets/config/portfolio.json
+          elif [ ! -f assets/config/portfolio.json ]; then
+            echo "PORTFOLIO_CONFIG_BASE64 secret not found, falling back to sample template..."
+            cp assets/config/portfolio.sample.json assets/config/portfolio.json
+          else
+            echo "Using existing repository configuration."
+          fi
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:

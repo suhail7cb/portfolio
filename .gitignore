@@ -47,6 +47,8 @@ ui-debug.log*
 # Environment and secrets
 .env*
 !.env.example
+assets/config/portfolio.json
+!assets/config/portfolio.sample.json
 
 # Symbolication and Obfuscation
 app.*.symbols
