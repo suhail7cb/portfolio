@@ -38,7 +38,9 @@ class ResponsiveGrid<T> extends StatelessWidget {
       );
     }
 
-    // On multi-column (tablet & desktop), chunk items into rows and stretch to tallest item.
+    // On multi-column (tablet & desktop), chunk items into rows.
+    // Each item sizes naturally to its content without rigid height constraints,
+    // completely preventing vertical RenderFlex overflow errors.
     final List<List<T>> rows = [];
     for (var i = 0; i < items.length; i += crossAxisCount) {
       rows.add(items.sublist(
@@ -52,20 +54,18 @@ class ResponsiveGrid<T> extends StatelessWidget {
       children: [
         for (var r = 0; r < rows.length; r++) ...[
           if (r > 0) SizedBox(height: runSpacing),
-          IntrinsicHeight(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                for (var c = 0; c < crossAxisCount; c++) ...[
-                  if (c > 0) SizedBox(width: spacing),
-                  Expanded(
-                    child: c < rows[r].length
-                        ? itemBuilder(context, rows[r][c])
-                        : const SizedBox.shrink(),
-                  ),
-                ],
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (var c = 0; c < crossAxisCount; c++) ...[
+                if (c > 0) SizedBox(width: spacing),
+                Expanded(
+                  child: c < rows[r].length
+                      ? itemBuilder(context, rows[r][c])
+                      : const SizedBox.shrink(),
+                ),
               ],
-            ),
+            ],
           ),
         ],
       ],

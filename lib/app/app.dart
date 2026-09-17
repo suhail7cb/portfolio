@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../core/theme/app_theme.dart';
 import '../core/theme/theme_cubit.dart';
 import '../features/portfolio/presentation/bloc/portfolio_cubit.dart';
+import '../features/portfolio/presentation/pages/admin/admin_gate_page.dart';
 import '../features/portfolio/presentation/pages/portfolio_page.dart';
 import 'service_locator.dart';
 
@@ -29,7 +30,11 @@ class PortfolioApp extends StatelessWidget {
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: themeMode,
-            home: const PortfolioPage(),
+            initialRoute: '/',
+            routes: {
+              '/': (context) => const PortfolioPage(),
+              '/admin': (context) => const AdminGatePage(),
+            },
           );
         },
       ),

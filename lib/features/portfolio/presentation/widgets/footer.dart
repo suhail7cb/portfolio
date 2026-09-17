@@ -93,15 +93,30 @@ class PortfolioFooter extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text(
-                    'Built with Flutter Clean Architecture',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: isDark
-                          ? AppColors.darkTextMuted
-                          : AppColors.lightTextMuted,
-                    ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Built with Flutter Clean Architecture',
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: isDark
+                              ? AppColors.darkTextMuted
+                              : AppColors.lightTextMuted,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      IconButton(
+                        icon: const Icon(Icons.lock_outline_rounded, size: 14),
+                        tooltip: 'Admin Portal',
+                        color: isDark
+                            ? AppColors.darkTextMuted.withValues(alpha: 0.5)
+                            : AppColors.lightTextMuted.withValues(alpha: 0.5),
+                        hoverColor: AppColors.primary.withValues(alpha: 0.15),
+                        onPressed: () => Navigator.of(context).pushNamed('/admin'),
+                      ),
+                    ],
                   ),
                 ],
               ),

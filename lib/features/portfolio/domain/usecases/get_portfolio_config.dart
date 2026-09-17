@@ -10,4 +10,12 @@ class GetPortfolioConfig {
   Future<PortfolioConfig> call() async {
     return await repository.getPortfolioConfig();
   }
+
+  Future<PortfolioConfig> getLocal() async {
+    return await repository.getLocalConfig();
+  }
+
+  Future<PortfolioConfig?> getRemote() async {
+    return await repository.getRemoteConfig();
+  }
 }

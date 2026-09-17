@@ -98,4 +98,34 @@ class PortfolioConfig {
         'education': education.map((e) => e.toJson()).toList(),
         'certifications': certifications.map((e) => e.toJson()).toList(),
       };
+
+  PortfolioConfig copyWith({
+    PersonalInfo? personalInfo,
+    List<Experience>? experiences,
+    List<Project>? projects,
+    List<SkillGroup>? skillGroups,
+    List<Education>? education,
+    List<Certification>? certifications,
+    List<Achievement>? achievements,
+    List<SocialLink>? socialLinks,
+    List<NavigationItem>? navigationItems,
+    SectionConfig? sectionConfig,
+    String? metaTitle,
+    String? metaDescription,
+  }) {
+    return PortfolioConfig(
+      personalInfo: personalInfo ?? this.personalInfo,
+      experiences: experiences ?? this.experiences,
+      projects: projects ?? this.projects,
+      skillGroups: skillGroups ?? this.skillGroups,
+      education: education ?? this.education,
+      certifications: certifications ?? this.certifications,
+      achievements: achievements ?? this.achievements,
+      socialLinks: socialLinks ?? this.socialLinks,
+      navigationItems: navigationItems ?? this.navigationItems,
+      sectionConfig: sectionConfig ?? this.sectionConfig,
+      metaTitle: metaTitle ?? this.metaTitle,
+      metaDescription: metaDescription ?? this.metaDescription,
+    );
+  }
 }

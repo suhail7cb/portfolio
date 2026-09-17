@@ -24,121 +24,135 @@ class ProjectCard extends StatelessWidget {
       borderRadius: AppDimensions.radiusL,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
-          // Top Badges (Category & Duration)
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // Top Content Group
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              if (project.category != null)
-                BadgePill(
-                  label: project.category!,
-                  color: AppColors.primary.withValues(alpha: 0.12),
-                  textColor: AppColors.primary,
-                )
-              else
-                const SizedBox.shrink(),
-              if (project.duration != null)
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.schedule,
-                      size: 13,
-                      color: isDark
-                          ? AppColors.darkTextMuted
-                          : AppColors.lightTextMuted,
+              // Top Badges (Category & Duration)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (project.category != null)
+                    BadgePill(
+                      label: project.category!,
+                      color: AppColors.primary.withValues(alpha: 0.12),
+                      textColor: AppColors.primary,
+                    )
+                  else
+                    const SizedBox.shrink(),
+                  if (project.duration != null)
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.schedule,
+                          size: 13,
+                          color: isDark
+                              ? AppColors.darkTextMuted
+                              : AppColors.lightTextMuted,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          project.duration!,
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: isDark
+                                ? AppColors.darkTextMuted
+                                : AppColors.lightTextMuted,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 4),
-                    Text(
-                      project.duration!,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: isDark
-                            ? AppColors.darkTextMuted
-                            : AppColors.lightTextMuted,
+                ],
+              ),
+              const SizedBox(height: 16),
+
+              // Project Title
+              Text(
+                project.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: context.textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.w700,
+                  color: isDark ? Colors.white : AppColors.lightTextPrimary,
+                ),
+              ),
+              const SizedBox(height: 6),
+
+              // Client Tag
+              if (project.client != null) ...[
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.business,
+                      size: 14,
+                      color: AppColors.secondary,
+                    ),
+                    const SizedBox(width: 6),
+                    Expanded(
+                      child: Text(
+                        project.client!,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.secondary,
+                        ),
                       ),
                     ),
                   ],
                 ),
+                const SizedBox(height: 12),
+              ],
+
+              // Overview Snippet
+              Text(
+                project.overview,
+                maxLines: 4,
+                overflow: TextOverflow.ellipsis,
+                style: context.textTheme.bodyMedium?.copyWith(
+                  height: 1.55,
+                  color: isDark
+                      ? AppColors.darkTextSecondary
+                      : AppColors.lightTextSecondary,
+                ),
+              ),
             ],
           ),
-          const SizedBox(height: 16),
 
-          // Project Title
-          Text(
-            project.title,
-            style: context.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.w700,
-              color: isDark ? Colors.white : AppColors.lightTextPrimary,
-            ),
-          ),
-          const SizedBox(height: 6),
+          const SizedBox(height: 20),
 
-          // Client Tag
-          if (project.client != null) ...[
-            Row(
-              children: [
-                const Icon(
-                  Icons.business,
-                  size: 14,
-                  color: AppColors.secondary,
-                ),
-                const SizedBox(width: 6),
-                Expanded(
-                  child: Text(
-                    project.client!,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.secondary,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-          ],
-
-          // Overview Snippet (natural wrapping)
-          Text(
-            project.overview,
-            maxLines: 5,
-            overflow: TextOverflow.ellipsis,
-            style: context.textTheme.bodyMedium?.copyWith(
-              height: 1.55,
-              color: isDark
-                  ? AppColors.darkTextSecondary
-                  : AppColors.lightTextSecondary,
-            ),
-          ),
-          const SizedBox(height: 16),
-
-          const Spacer(),
-
-          // Tech Chips
-          if (project.technologies.isNotEmpty) ...[
-            Wrap(
-              spacing: 6,
-              runSpacing: 6,
-              children: project.technologies.take(4).map((tech) {
-                return BadgePill(
-                  label: tech,
-                  color: isDark
-                      ? const Color(0xFF1E293B)
-                      : const Color(0xFFE2E8F0),
-                );
-              }).toList(),
-            ),
-            const SizedBox(height: 16),
-          ],
-
-          // Action Link + Dynamic Platform Store Icons
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // Bottom Content Group (Tech Chips + Actions)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
+              // Tech Chips
+              if (project.technologies.isNotEmpty) ...[
+                Wrap(
+                  spacing: 6,
+                  runSpacing: 6,
+                  children: project.technologies.take(4).map((tech) {
+                    return BadgePill(
+                      label: tech,
+                      color: isDark
+                          ? const Color(0xFF1E293B)
+                          : const Color(0xFFE2E8F0),
+                    );
+                  }).toList(),
+                ),
+                const SizedBox(height: 16),
+              ],
+
+              // Action Link + Dynamic Platform Store Icons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
               // Explore Details button
               Row(
                 mainAxisSize: MainAxisSize.min,
@@ -195,7 +209,9 @@ class ProjectCard extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ],
+  ),
+);
   }
 }
 

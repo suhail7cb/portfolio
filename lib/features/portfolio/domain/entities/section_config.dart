@@ -52,4 +52,30 @@ class SectionConfig {
         'showCertifications': showCertifications,
         'showContact': showContact,
       };
+
+  SectionConfig copyWith({
+    bool? showHero,
+    bool? showAbout,
+    bool? showHighlights,
+    bool? showExperience,
+    bool? showProjects,
+    bool? showSkills,
+    bool? showImpact,
+    bool? showEducation,
+    bool? showCertifications,
+    bool? showContact,
+  }) {
+    return SectionConfig(
+      showHero: showHero ?? this.showHero,
+      showAbout: showAbout ?? this.showAbout,
+      showHighlights: showHighlights ?? this.showHighlights,
+      showExperience: showExperience ?? this.showExperience,
+      showProjects: showProjects ?? this.showProjects,
+      showSkills: showSkills ?? this.showSkills,
+      showImpact: showImpact ?? this.showImpact,
+      showEducation: showEducation ?? this.showEducation,
+      showCertifications: showCertifications ?? this.showCertifications,
+      showContact: showContact ?? this.showContact,
+    );
+  }
 }

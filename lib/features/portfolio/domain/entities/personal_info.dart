@@ -65,4 +65,34 @@ class PersonalInfo {
         if (profileImageUrl != null) 'profileImageUrl': profileImageUrl,
         if (resumeDownloadUrl != null) 'resumeDownloadUrl': resumeDownloadUrl,
       };
+
+  PersonalInfo copyWith({
+    String? name,
+    String? title,
+    String? tagline,
+    String? location,
+    String? email,
+    String? phone,
+    String? totalExperience,
+    String? professionalSummary,
+    List<String>? highlights,
+    String? professionalDevelopmentSummary,
+    String? profileImageUrl,
+    String? resumeDownloadUrl,
+  }) {
+    return PersonalInfo(
+      name: name ?? this.name,
+      title: title ?? this.title,
+      tagline: tagline ?? this.tagline,
+      location: location ?? this.location,
+      email: email ?? this.email,
+      phone: phone ?? this.phone,
+      totalExperience: totalExperience ?? this.totalExperience,
+      professionalSummary: professionalSummary ?? this.professionalSummary,
+      highlights: highlights ?? this.highlights,
+      professionalDevelopmentSummary: professionalDevelopmentSummary ?? this.professionalDevelopmentSummary,
+      profileImageUrl: profileImageUrl ?? this.profileImageUrl,
+      resumeDownloadUrl: resumeDownloadUrl ?? this.resumeDownloadUrl,
+    );
+  }
 }

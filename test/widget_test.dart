@@ -149,5 +149,18 @@ void main() {
       final sectionState = cubit.state as PortfolioLoaded;
       expect(sectionState.activeSectionKey, 'experience');
     });
+
+    test('PortfolioConfig copyWith updates fields immutably', () {
+      final config = PortfolioConfigLoader.loadFromString(portfolioJsonContent);
+      final updated = config.copyWith(metaTitle: 'New Title');
+      expect(updated.metaTitle, 'New Title');
+      expect(updated.personalInfo.name, config.personalInfo.name);
+    });
+
+    test('PortfolioRepositoryImpl falls back to local data source when remote is unavailable', () async {
+      final repo = ServiceLocator.portfolioRepository;
+      final config = await repo.getPortfolioConfig();
+      expect(config.personalInfo.name, 'Suhail Shabir');
+    });
   });
 }
