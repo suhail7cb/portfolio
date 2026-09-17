@@ -78,6 +78,26 @@ void main() {
       expect(config.certifications.length, 3);
     });
 
+    test('loads and validates portfolio.sample.json cleanly', () {
+      final sampleFile = File('assets/config/portfolio.sample.json');
+      expect(sampleFile.existsSync(), true);
+
+      final sampleConfig =
+          PortfolioConfigLoader.loadFromString(sampleFile.readAsStringSync());
+
+      expect(sampleConfig.personalInfo.name, 'Jane Doe');
+      expect(sampleConfig.personalInfo.title, contains('Staff Mobile Engineer'));
+      expect(sampleConfig.experiences.isNotEmpty, true);
+      expect(sampleConfig.projects.isNotEmpty, true);
+      expect(sampleConfig.skillGroups.isNotEmpty, true);
+      expect(sampleConfig.achievements.isNotEmpty, true);
+      expect(sampleConfig.education.isNotEmpty, true);
+      expect(sampleConfig.certifications.isNotEmpty, true);
+      expect(sampleConfig.sectionConfig.showHero, true);
+      expect(sampleConfig.sectionConfig.showAbout, true);
+      expect(sampleConfig.sectionConfig.showProjects, true);
+    });
+
     test('throws PortfolioConfigValidationException when name is missing', () {
       const invalidJson = '''
       {
