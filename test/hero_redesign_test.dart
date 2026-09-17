@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:portfolio/core/constants/app_constants.dart';
 import 'package:portfolio/core/theme/app_theme.dart';
 import 'package:portfolio/core/theme/theme_cubit.dart';
 import 'package:portfolio/features/portfolio/domain/entities/personal_info.dart';
@@ -8,7 +9,7 @@ import 'package:portfolio/features/portfolio/presentation/sections/hero_section.
 import 'package:portfolio/features/portfolio/presentation/widgets/portfolio_nav_bar.dart';
 
 void main() {
-  const samplePersonalInfo = PersonalInfo(
+  final samplePersonalInfo = PersonalInfo(
     name: 'Suhail Shabir',
     title: 'Senior Mobile Engineer',
     tagline: 'Building scalable iOS & Flutter products with a focus on clean architecture, great UX and real-world impact.',
@@ -19,7 +20,7 @@ void main() {
     professionalSummary: 'Over 10 years of experience designing, architecting, and delivering high-impact mobile solutions.',
     highlights: ['Swift', 'Flutter', 'Leadership'],
     professionalDevelopmentSummary: 'Dedicated mobile engineer.',
-    profileImageUrl: 'assets/images/profile.jpeg',
+    profileImageUrl: AppConstants.profilePic,
     resumeDownloadUrl: 'assets/resume/Suhail_Shabir.docx',
   );
 
@@ -89,6 +90,27 @@ void main() {
       expect(find.text('Apps / Products'), findsOneWidget);
       expect(find.text('4+'), findsOneWidget);
       expect(find.text('Teams Mentored'), findsOneWidget);
+    });
+
+    testWidgets('tapping Download Résumé triggers download and snackbar', (tester) async {
+      tester.view.physicalSize = const Size(1440, 1200);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(() => tester.view.resetPhysicalSize());
+
+      await tester.pumpWidget(buildTestApp(
+        child: HeroSection(
+          personalInfo: samplePersonalInfo,
+          onExploreProjects: () {},
+          onContactMe: () {},
+        ),
+      ));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Download Résumé'), findsOneWidget);
+      await tester.tap(find.text('Download Résumé'));
+      await tester.pump();
+
+      expect(find.text('Downloading résumé...'), findsOneWidget);
     });
 
     testWidgets('renders cleanly on mobile without overflow and keeps name, role & picture on top', (tester) async {

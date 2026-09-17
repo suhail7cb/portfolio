@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:portfolio/core/constants/app_constants.dart';
 
 /// Helper utility to discover, rotate, and manage profile photos
 /// bundled in `assets/images/` or configured in [PersonalInfo].
@@ -15,6 +16,7 @@ class ProfileImageHelper {
     _cachedAssetImages = null;
     _sessionSelectedImage = null;
     _currentIndex = 0;
+    AppConstants.resetProfilePic();
   }
 
   /// Discovers all candidate image assets inside `assets/images/`.
@@ -70,10 +72,15 @@ class ProfileImageHelper {
           .where((s) => s.isNotEmpty);
 
       for (final url in customUrls) {
+        if (url == 'assets/images/profile.jpeg') continue;
         if (!candidates.contains(url)) {
           candidates.add(url);
         }
       }
+    }
+
+    if (candidates.isEmpty) {
+      candidates.add(AppConstants.profilePic);
     }
 
     return candidates;

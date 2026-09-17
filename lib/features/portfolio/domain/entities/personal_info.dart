@@ -38,33 +38,39 @@ class PersonalInfo {
       phone: json['phone'] as String? ?? '',
       totalExperience: json['totalExperience'] as String? ?? '',
       professionalSummary: json['professionalSummary'] as String? ?? '',
-      highlights: (json['highlights'] as List<dynamic>?)
+      highlights:
+          (json['highlights'] as List<dynamic>?)
               ?.map((e) => e.toString())
               .toList() ??
           const [],
       professionalDevelopmentSummary:
           json['professionalDevelopmentSummary'] as String? ?? '',
-      profileImageUrl: json['profileImageUrl'] as String? ??
-          json['profileImage'] as String?,
-      resumeDownloadUrl: json['resumeDownloadUrl'] as String? ??
-          json['resumeUrl'] as String?,
+      profileImageUrl: () {
+        final raw = json['profileImageUrl'] as String? ?? json['profileImage'] as String?;
+        if (raw == null || raw.trim().isEmpty || raw.trim() == 'assets/images/profile.jpeg') {
+          return null;
+        }
+        return raw;
+      }(),
+      resumeDownloadUrl:
+          json['resumeDownloadUrl'] as String? ?? json['resumeUrl'] as String?,
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'name': name,
-        'title': title,
-        'tagline': tagline,
-        'location': location,
-        'email': email,
-        'phone': phone,
-        'totalExperience': totalExperience,
-        'professionalSummary': professionalSummary,
-        'highlights': highlights,
-        'professionalDevelopmentSummary': professionalDevelopmentSummary,
-        if (profileImageUrl != null) 'profileImageUrl': profileImageUrl,
-        if (resumeDownloadUrl != null) 'resumeDownloadUrl': resumeDownloadUrl,
-      };
+    'name': name,
+    'title': title,
+    'tagline': tagline,
+    'location': location,
+    'email': email,
+    'phone': phone,
+    'totalExperience': totalExperience,
+    'professionalSummary': professionalSummary,
+    'highlights': highlights,
+    'professionalDevelopmentSummary': professionalDevelopmentSummary,
+    if (profileImageUrl != null) 'profileImageUrl': profileImageUrl,
+    if (resumeDownloadUrl != null) 'resumeDownloadUrl': resumeDownloadUrl,
+  };
 
   PersonalInfo copyWith({
     String? name,
@@ -90,7 +96,8 @@ class PersonalInfo {
       totalExperience: totalExperience ?? this.totalExperience,
       professionalSummary: professionalSummary ?? this.professionalSummary,
       highlights: highlights ?? this.highlights,
-      professionalDevelopmentSummary: professionalDevelopmentSummary ?? this.professionalDevelopmentSummary,
+      professionalDevelopmentSummary:
+          professionalDevelopmentSummary ?? this.professionalDevelopmentSummary,
       profileImageUrl: profileImageUrl ?? this.profileImageUrl,
       resumeDownloadUrl: resumeDownloadUrl ?? this.resumeDownloadUrl,
     );

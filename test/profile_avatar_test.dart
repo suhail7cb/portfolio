@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:portfolio/core/constants/app_constants.dart';
 import 'package:portfolio/core/utils/profile_image_helper.dart';
 import 'package:portfolio/shared/components/profile_avatar.dart';
 
@@ -27,7 +28,7 @@ void main() {
     test('getAvailableAssetImages discovers images from assets/images', () async {
       final images = await ProfileImageHelper.getAvailableAssetImages();
       expect(images, isNotEmpty);
-      expect(images.contains('assets/images/profile.jpeg'), isTrue);
+      expect(images.contains(AppConstants.profilePic), isTrue);
       // Ensure gitkeep is excluded
       expect(images.any((img) => img.endsWith('.gitkeep')), isFalse);
     });
@@ -76,11 +77,11 @@ void main() {
       ProfileImageHelper.resetCache();
 
       await tester.pumpWidget(
-        const MaterialApp(
+        MaterialApp(
           home: Scaffold(
             body: ProfileAvatar(
               name: 'Suhail Shabir',
-              profileImageUrl: 'assets/images/profile.jpeg',
+              profileImageUrl: AppConstants.profilePic,
               size: 120,
             ),
           ),
