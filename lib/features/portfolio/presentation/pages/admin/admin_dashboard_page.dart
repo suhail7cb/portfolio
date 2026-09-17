@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/constants/app_constants.dart';
 import '../../../domain/entities/achievement.dart';
 import '../../../domain/entities/certification.dart';
 import '../../../domain/entities/education.dart';
@@ -381,7 +382,7 @@ class _AdminDashboardPageState extends State<AdminDashboardPage>
                 children: [
                   Expanded(
                     child: _buildTextField(
-                      'Profile Image Asset/URL (e.g. assets/images/profile.jpeg, or comma-separated)',
+                      'Profile Image Asset/URL (e.g. ${AppConstants.profilePic}, or comma-separated)',
                       _avatarController,
                     ),
                   ),

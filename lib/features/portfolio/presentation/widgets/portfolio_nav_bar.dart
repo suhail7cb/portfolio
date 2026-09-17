@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:portfolio/core/constants/app_colors.dart';
+import 'package:portfolio/core/constants/app_constants.dart';
 import 'package:portfolio/core/constants/app_dimensions.dart';
 import 'package:portfolio/core/extensions/context_extensions.dart';
 import 'package:portfolio/core/responsive/responsive_builder.dart';
@@ -113,7 +114,7 @@ class PortfolioNavBar extends StatelessWidget {
                         child: ClipOval(
                           child: Image.asset(
                             personalInfo.profileImageUrl ??
-                                'assets/images/profile.jpeg',
+                                AppConstants.profilePic,
                             fit: BoxFit.cover,
                             alignment: Alignment.topCenter,
                             errorBuilder: (_, __, ___) => Container(

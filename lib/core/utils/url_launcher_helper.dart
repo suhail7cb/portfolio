@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:portfolio/core/utils/file_downloader.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// Helper to safely launch external URLs, mailto, and tel links.
@@ -6,7 +7,18 @@ class UrlLauncherHelper {
   UrlLauncherHelper._();
 
   static Future<bool> launchURL(String urlString) async {
-    final Uri? uri = Uri.tryParse(urlString.trim());
+    final clean = urlString.trim();
+    if (clean.isEmpty) return false;
+
+    // Handle local assets or relative paths directly via FileDownloader
+    if (clean.startsWith('assets/') ||
+        (!clean.contains('://') &&
+            !clean.startsWith('mailto:') &&
+            !clean.startsWith('tel:'))) {
+      return FileDownloader.downloadFile(urlOrAssetPath: clean);
+    }
+
+    final Uri? uri = Uri.tryParse(clean);
     if (uri == null) {
       debugPrint('Could not parse url: $urlString');
       return false;
@@ -19,8 +31,8 @@ class UrlLauncherHelper {
           mode: LaunchMode.platformDefault,
         );
       } else {
-        debugPrint('Cannot launch URL: $urlString');
-        return false;
+        // Fallback: attempt FileDownloader
+        return await FileDownloader.downloadFile(urlOrAssetPath: clean);
       }
     } catch (e) {
       debugPrint('Error launching URL ($urlString): $e');

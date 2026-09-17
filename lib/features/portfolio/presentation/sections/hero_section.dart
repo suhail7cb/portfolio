@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio/core/constants/app_colors.dart';
+import 'package:portfolio/core/constants/app_constants.dart';
 import 'package:portfolio/core/constants/app_dimensions.dart';
 import 'package:portfolio/core/extensions/context_extensions.dart';
 import 'package:portfolio/core/responsive/responsive_builder.dart';
 import 'package:portfolio/core/responsive/responsive_layout.dart';
-import 'package:portfolio/core/utils/url_launcher_helper.dart';
+import 'package:portfolio/core/utils/file_downloader.dart';
 import 'package:portfolio/features/portfolio/domain/entities/personal_info.dart';
 import 'package:portfolio/shared/components/profile_avatar.dart';
+
 
 /// Redesigned Hero Section matching the reference design:
 /// - Outer illuminated navy card with integrated bottom stats ribbon
@@ -39,8 +41,11 @@ class _HeroSectionState extends State<HeroSection> {
     final url =
         widget.personalInfo.resumeDownloadUrl ??
         'assets/resume/Suhail_Shabir.docx';
-    UrlLauncherHelper.launchURL(url);
-    context.showSnackBar('Opening résumé...');
+    FileDownloader.downloadFile(
+      urlOrAssetPath: url,
+      fileName: 'Suhail_Shabir_Resume.docx',
+    );
+    context.showSnackBar('Downloading résumé...');
   }
 
   @override
@@ -96,7 +101,7 @@ class _HeroSectionState extends State<HeroSection> {
                   isMobile ? 20 : (isTablet ? 28 : 44),
                   isMobile ? 8 : (isTablet ? 6 : 8),
                   isMobile ? 20 : (isTablet ? 28 : 44),
-                  isMobile ? 4 : (isTablet ? 2 : 4),
+                  isMobile ? 24 : (isTablet ? 2 : 4),
                 ),
                 child: isMobile
                     ? Column(
@@ -174,6 +179,7 @@ class _HeroSectionState extends State<HeroSection> {
 
   /// Name & Role: "Hello, I'm", "Suhail Shabir" (with gradient), and "Senior Mobile Engineer"
   Widget _buildNameAndRole(BuildContext context, bool isDark, bool isMobile) {
+    final bool isTablet = ResponsiveBuilder.isTablet(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -196,7 +202,7 @@ class _HeroSectionState extends State<HeroSection> {
             Text(
               'Suhail ',
               style: TextStyle(
-                fontSize: isMobile ? 32 : 46,
+                fontSize: isMobile ? 32 : (isTablet ? 36 : 46),
                 fontWeight: FontWeight.w900,
                 letterSpacing: -1.0,
                 color: isDark ? Colors.white : AppColors.lightTextPrimary,
@@ -215,7 +221,7 @@ class _HeroSectionState extends State<HeroSection> {
               child: Text(
                 'Shabir',
                 style: TextStyle(
-                  fontSize: isMobile ? 32 : 46,
+                  fontSize: isMobile ? 32 : (isTablet ? 36 : 46),
                   fontWeight: FontWeight.w900,
                   letterSpacing: -1.0,
                   color: Colors.white,
@@ -307,8 +313,13 @@ class _HeroSectionState extends State<HeroSection> {
     bool isMobile,
     double shrinkProgress,
   ) {
-    final double baseVisualWidth = isMobile ? 310.0 : 420.0;
-    final double baseVisualHeight = isMobile ? 320.0 : 380.0;
+    final bool isTablet = ResponsiveBuilder.isTablet(context);
+    final double baseVisualWidth = isMobile
+        ? 310.0
+        : (isTablet ? 340.0 : 420.0);
+    final double baseVisualHeight = isMobile
+        ? 320.0
+        : (isTablet ? 330.0 : 380.0);
 
     // As user scrolls down, scale shrinks smoothly towards the sized-down state
     // Desktop: smoothly shrinks by up to 42%
@@ -382,7 +393,7 @@ class _HeroSectionState extends State<HeroSection> {
                       borderRadius: BorderRadius.circular(24),
                       child: Image.asset(
                         widget.personalInfo.profileImageUrl ??
-                            'assets/images/profile.jpeg',
+                            AppConstants.profilePic,
                         fit: BoxFit.cover,
                         alignment: Alignment.topCenter,
                         errorBuilder: (context, error, stackTrace) =>
