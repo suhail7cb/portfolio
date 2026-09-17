@@ -111,19 +111,43 @@ class _PortfolioPageState extends State<PortfolioPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(
-                    width: 44,
-                    height: 44,
-                    child: CircularProgressIndicator(
-                      strokeWidth: 3,
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        AppColors.primary,
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 76,
+                        height: 76,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2.5,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            AppColors.primary,
+                          ),
+                        ),
                       ),
-                    ),
+                      ClipOval(
+                        child: Image.asset(
+                          'assets/images/profile_1.jpeg',
+                          width: 60,
+                          height: 60,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) =>
+                              Container(
+                                width: 60,
+                                height: 60,
+                                color: AppColors.primary.withValues(alpha: 0.1),
+                                child: const Icon(
+                                  Icons.person_rounded,
+                                  color: AppColors.primary,
+                                  size: 30,
+                                ),
+                              ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    'Loading Portfolio Experience...',
+                    'Loading Suhail Shabir Portfolio...',
                     style: TextStyle(
                       color: isDark
                           ? AppColors.darkTextSecondary
