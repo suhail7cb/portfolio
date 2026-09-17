@@ -17,11 +17,20 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(js|css|wasm)",
+        "source": "**/*.@(jpg|jpeg|gif|png|webp|svg|woff|woff2|ttf)",
         "headers": [
           {
             "key": "Cache-Control",
             "value": "max-age=31536000"
+          }
+        ]
+      },
+      {
+        "source": "**/@(flutter_service_worker.js|flutter_bootstrap.js|version.json|index.html)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
           }
         ]
       }
