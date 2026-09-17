@@ -13,12 +13,14 @@ This project is engineered not only as a personal portfolio, but as a **reusable
 
 ## ✨ Features
 
-- **100% JSON-Driven Content**: All personal details, work history, projects, skills, education, certifications, and links are managed from a single file: [`assets/config/portfolio.json`](assets/config/portfolio.json).
+- **100% JSON-Driven Content**: All personal details, work history, projects, skills, education, certifications, and links are managed from a single file: [`assets/config/portfolio.json`](assets/config/portfolio.json). A complete, starter template is also provided in [`assets/config/portfolio.sample.json`](assets/config/portfolio.sample.json).
+- **Interactive Senior Case Studies**: Full in-depth modals for featured projects displaying problem statements, architecture decisions, user personas, technical challenges with solutions, and impact metrics.
+- **Dynamic Profile Randomizer & Sticky Identity**: Multi-image session rotation across bundled profile pictures (`assets/images/profile_*.jpeg`) with a smooth docking animation into the sticky top navigation bar.
+- **Native Resume File Downloader**: Seamless cross-platform document download handling local assets via browser Blobs as well as external URLs.
 - **Clean Architecture & SOLID Principles**: Clear separation between Domain entities, Data loaders/parsers, Presentation UI widgets, and Core utilities.
 - **Adaptive Responsive Layout (Zero Clipping)**: Powered by a custom `ResponsiveGrid` that automatically sizes cards to match content using `IntrinsicHeight` and flex stretching, preventing text or badge truncation on desktop, tablet, and mobile.
 - **Dynamic Platform Store Links**: Projects support store and repository links (`web`, `android`, `ios`, `github`) with automatically rendered platform icons and direct link launching.
 - **Dark & Light Theme Engine**: Modern obsidian space dark mode and crisp slate light mode with Google Fonts typography (`Outfit` headings and `Inter` body).
-- **Interactive Project Modals**: In-depth modal dialogs for featured projects displaying user personas, full capability lists, client tags, and direct launch buttons.
 - **SEO & Social Share Ready**: Pre-configured with meta tags, OpenGraph attributes, responsive viewports, and custom HTML5 loading indicators in `web/index.html`.
 - **Zero-Config Multi-Platform Deployment**: Portable across **Firebase Hosting**, **GitHub Pages**, **Netlify**, **Vercel**, and any static file host.
 
@@ -32,8 +34,10 @@ The project strictly adheres to **Clean Architecture** to maintain independent t
 portfolio/
 ├── assets/
 │   ├── config/
-│   │   └── portfolio.json            # Single source of truth for all content
-│   └── images/                       # Project screenshots, thumbnails & avatars
+│   │   ├── portfolio.json            # Single source of truth for all content
+│   │   └── portfolio.sample.json     # Ready-to-use template for new portfolios
+│   ├── images/                       # Profile photos and project screenshots
+│   └── resume/                       # Downloadable resume document assets
 │
 ├── lib/
 │   ├── main.dart                     # App entry point

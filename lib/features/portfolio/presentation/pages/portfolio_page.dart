@@ -116,14 +116,18 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     height: 44,
                     child: CircularProgressIndicator(
                       strokeWidth: 3,
-                      valueColor: AlwaysStoppedAnimation<Color>(AppColors.primary),
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        AppColors.primary,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
                   Text(
                     'Loading Portfolio Experience...',
                     style: TextStyle(
-                      color: isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary,
+                      color: isDark
+                          ? AppColors.darkTextSecondary
+                          : AppColors.lightTextSecondary,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -139,12 +143,17 @@ class _PortfolioPageState extends State<PortfolioPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.error_outline_rounded, size: 48, color: AppColors.error),
+                  const Icon(
+                    Icons.error_outline_rounded,
+                    size: 48,
+                    color: AppColors.error,
+                  ),
                   const SizedBox(height: 16),
                   Text('Failed to load portfolio: ${state.message}'),
                   const SizedBox(height: 16),
                   ElevatedButton(
-                    onPressed: () => context.read<PortfolioCubit>().loadPortfolio(),
+                    onPressed: () =>
+                        context.read<PortfolioCubit>().loadPortfolio(),
                     child: const Text('Retry'),
                   ),
                 ],
@@ -164,7 +173,9 @@ class _PortfolioPageState extends State<PortfolioPage> {
             activeSectionKey: activeSection,
             onNavTap: _scrollToSection,
           ),
-          floatingActionButton: ScrollToTopFab(scrollController: _scrollController),
+          floatingActionButton: ScrollToTopFab(
+            scrollController: _scrollController,
+          ),
           body: Stack(
             children: [
               // Scrollable Content
@@ -183,11 +194,13 @@ class _PortfolioPageState extends State<PortfolioPage> {
                           personalInfo: config.personalInfo,
                           onExploreProjects: () => _scrollToSection('projects'),
                           onContactMe: () => _scrollToSection('contact'),
+                          scrollController: _scrollController,
                         ),
                       ),
 
                     // Section 2: Summary & Highlights
-                    if (config.sectionConfig.showAbout || config.sectionConfig.showHighlights)
+                    if (config.sectionConfig.showAbout ||
+                        config.sectionConfig.showHighlights)
                       Container(
                         key: _aboutKey,
                         child: SummaryHighlightsSection(
@@ -196,34 +209,36 @@ class _PortfolioPageState extends State<PortfolioPage> {
                       ),
 
                     // Section 3: Experience
-                    if (config.sectionConfig.showExperience && config.experiences.isNotEmpty)
+                    if (config.sectionConfig.showExperience &&
+                        config.experiences.isNotEmpty)
                       Container(
                         key: _experienceKey,
                         child: ExperienceSection(
                           experiences: config.experiences,
+                          onNavigateToProject: (projectTitle) =>
+                              _scrollToSection('projects'),
                         ),
                       ),
 
                     // Section 4: Projects
-                    if (config.sectionConfig.showProjects && config.projects.isNotEmpty)
+                    if (config.sectionConfig.showProjects &&
+                        config.projects.isNotEmpty)
                       Container(
                         key: _projectsKey,
-                        child: ProjectsSection(
-                          projects: config.projects,
-                        ),
+                        child: ProjectsSection(projects: config.projects),
                       ),
 
                     // Section 5: Skills
-                    if (config.sectionConfig.showSkills && config.skillGroups.isNotEmpty)
+                    if (config.sectionConfig.showSkills &&
+                        config.skillGroups.isNotEmpty)
                       Container(
                         key: _skillsKey,
-                        child: SkillsSection(
-                          skillGroups: config.skillGroups,
-                        ),
+                        child: SkillsSection(skillGroups: config.skillGroups),
                       ),
 
                     // Section 6: Key Achievements & Impact
-                    if (config.sectionConfig.showImpact && config.achievements.isNotEmpty)
+                    if (config.sectionConfig.showImpact &&
+                        config.achievements.isNotEmpty)
                       Container(
                         key: _impactKey,
                         child: AchievementsSection(
@@ -232,7 +247,8 @@ class _PortfolioPageState extends State<PortfolioPage> {
                       ),
 
                     // Section 7: Education & Certifications
-                    if ((config.sectionConfig.showEducation && config.education.isNotEmpty) ||
+                    if ((config.sectionConfig.showEducation &&
+                            config.education.isNotEmpty) ||
                         (config.sectionConfig.showCertifications &&
                             config.certifications.isNotEmpty))
                       Container(
@@ -274,7 +290,9 @@ class _PortfolioPageState extends State<PortfolioPage> {
                   navigationItems: config.navigationItems,
                   activeSectionKey: activeSection,
                   onNavTap: _scrollToSection,
-                  onOpenDrawer: () => _scaffoldKey.currentState?.openEndDrawer(),
+                  onOpenDrawer: () =>
+                      _scaffoldKey.currentState?.openEndDrawer(),
+                  scrollController: _scrollController,
                 ),
               ),
             ],

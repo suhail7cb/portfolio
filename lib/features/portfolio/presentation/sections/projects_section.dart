@@ -8,7 +8,8 @@ import 'package:portfolio/shared/components/badge_pill.dart';
 import 'package:portfolio/shared/components/responsive_grid.dart';
 import '../widgets/project_card.dart';
 
-/// Section showcasing featured and additional projects with category filtering.
+/// Section showcasing featured and production mobile projects with category filtering,
+/// visual mockup previews, and in-depth Case Study modals.
 class ProjectsSection extends StatefulWidget {
   final List<Project> projects;
 
@@ -27,8 +28,9 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     'Retail & Logistics',
     'E-Commerce',
     'Enterprise Logistics',
-    'Blockchain & Enterprise',
     'Fintech & Blockchain',
+    'Health & IoT',
+    'Others',
   ];
 
   @override
@@ -40,6 +42,10 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     final List<Project> filteredProjects = widget.projects.where((p) {
       if (_selectedFilter == 'All') return true;
       if (_selectedFilter == 'Featured') return p.isFeatured;
+      if (_selectedFilter == 'Health & IoT') {
+        return p.category == 'Health & IoT' ||
+            (p.category != null && p.category!.contains('Health'));
+      }
       return p.category == _selectedFilter;
     }).toList();
 
@@ -52,40 +58,62 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       child: ResponsiveContentWrapper(
         child: Column(
           children: [
+            // Section Header matching specification and mockup
             const SectionTitle(
-              subtitle: 'FEATURED & PRODUCTION WORK',
-              title: 'Projects Portfolio',
+              subtitle: 'FEATURED WORK',
+              title: 'Featured Projects',
               description:
-                  'Production-tested mobile applications delivered for high-profile clients including Liverpool (Mexico), Walmart, DLT Labs, and enterprise stakeholders.',
+                  'Production-tested mobile applications engineered for global enterprise clients including Liverpool, Walmart, and DLT Labs.',
             ),
 
-            // Filter Pills Row
+            // Category Filter Pills
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: _filters.map((filter) {
-                  final bool isSelected = _selectedFilter == filter;
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: BadgePill(
-                      label: filter,
-                      isSelected: isSelected,
-                      onTap: () => setState(() => _selectedFilter = filter),
-                    ),
-                  );
-                }).toList(),
+              physics: const BouncingScrollPhysics(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: _filters.map((filter) {
+                    final bool isSelected = _selectedFilter == filter;
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: BadgePill(
+                        label: filter,
+                        isSelected: isSelected,
+                        onTap: () => setState(() => _selectedFilter = filter),
+                      ),
+                    );
+                  }).toList(),
+                ),
               ),
             ),
             const SizedBox(height: 36),
 
-            // Responsive Projects Grid without fixed height clipping
-            ResponsiveGrid<Project>(
-              items: filteredProjects,
-              crossAxisCount: isMobile ? 1 : (isTablet ? 2 : 3),
-              spacing: 20,
-              runSpacing: 20,
-              itemBuilder: (context, project) => ProjectCard(project: project),
+            // Projects Grid with smooth transition
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 250),
+              switchInCurve: Curves.easeOutCubic,
+              switchOutCurve: Curves.easeInCubic,
+              child: filteredProjects.isNotEmpty
+                  ? ResponsiveGrid<Project>(
+                      key: ValueKey<String>(_selectedFilter),
+                      items: filteredProjects,
+                      crossAxisCount: isMobile ? 1 : (isTablet ? 2 : 3),
+                      spacing: 20,
+                      runSpacing: 20,
+                      itemBuilder: (context, project) =>
+                          ProjectCard(project: project),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 40),
+                      child: Text(
+                        'No projects found in this category.',
+                        style: TextStyle(
+                          color: Theme.of(context).textTheme.bodyMedium?.color,
+                        ),
+                      ),
+                    ),
             ),
           ],
         ),

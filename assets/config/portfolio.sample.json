@@ -1,81 +1,393 @@
 {
-  "metaTitle": "Jane Doe | Mobile Application Architect",
-  "metaDescription": "Personal portfolio showcasing mobile engineering, Flutter architecture, and enterprise apps.",
+  "metaTitle": "Jane Doe | Staff Mobile Engineer (iOS & Flutter)",
+  "metaDescription": "Senior mobile engineer portfolio showcasing scalable iOS and Flutter architectures, enterprise case studies, and mobile product leadership.",
   "sectionConfig": {
-    "showSummary": true,
-    "showSkills": true,
+    "showHero": true,
+    "showAbout": true,
+    "showHighlights": true,
     "showExperience": true,
     "showProjects": true,
+    "showSkills": true,
+    "showImpact": true,
     "showEducation": true,
     "showCertifications": true,
-    "showAchievements": true,
     "showContact": true
   },
   "navigationItems": [
-    { "label": "About", "sectionKey": "summary" },
-    { "label": "Skills", "sectionKey": "skills" },
-    { "label": "Experience", "sectionKey": "experience" },
-    { "label": "Projects", "sectionKey": "projects" },
-    { "label": "Contact", "sectionKey": "contact" }
+    {
+      "label": "About",
+      "sectionKey": "about"
+    },
+    {
+      "label": "Experience",
+      "sectionKey": "experience"
+    },
+    {
+      "label": "Projects",
+      "sectionKey": "projects"
+    },
+    {
+      "label": "Skills",
+      "sectionKey": "skills"
+    },
+    {
+      "label": "Impact",
+      "sectionKey": "impact"
+    },
+    {
+      "label": "Education",
+      "sectionKey": "education"
+    },
+    {
+      "label": "Contact",
+      "sectionKey": "contact"
+    }
   ],
   "personalInfo": {
     "name": "Jane Doe",
     "title": "Staff Mobile Engineer (iOS & Flutter)",
-    "tagline": "Architecting resilient, production-scale mobile applications across platforms.",
+    "tagline": "Building scalable iOS & Flutter products with clean architecture, great UX, and real-world impact.",
+    "location": "San Francisco, CA",
     "email": "jane.doe@example.com",
     "phone": "+1 (555) 019-2834",
-    "location": "San Francisco, CA",
-    "avatarAsset": "assets/images/profile.png",
-    "summary": "Accomplished mobile software engineer specializing in cross-platform Flutter architecture, native iOS performance, and developer tooling."
+    "totalExperience": "10+ Years in Mobile Development",
+    "professionalSummary": "Accomplished mobile software engineer and technical leader with over a decade of experience engineering resilient, high-volume mobile systems. Proven record leading mobile teams across native iOS (Swift/SwiftUI) and cross-platform Flutter platforms for global enterprise clients.",
+    "highlights": [
+      "Expert-level proficiency in Swift, SwiftUI, Flutter, Dart, and Clean Architecture",
+      "Strong focus on UX polish, smooth 60fps animations, and accessibility",
+      "Proven technical leadership, architecture reviews, and team mentorship",
+      "Deep integration experience with offline sync, REST/GraphQL APIs, and Firebase",
+      "Robust CI/CD automation pipelines and automated UI/unit testing"
+    ],
+    "professionalDevelopmentSummary": "Over the past decade, my engineering journey has spanned high-growth startups and Fortune 500 enterprises. Starting in native iOS, I transitioned to multi-platform leadership with Flutter, consistently shipping production apps with millions of downloads and 4.8+ App Store ratings.",
+    "profileImageUrl": null,
+    "resumeDownloadUrl": "assets/resume/Suhail_Shabir.docx"
   },
   "socialLinks": [
-    { "platform": "github", "url": "https://github.com/example", "label": "GitHub" },
-    { "platform": "linkedin", "url": "https://linkedin.com/in/example", "label": "LinkedIn" },
-    { "platform": "email", "url": "mailto:jane.doe@example.com", "label": "Email" }
+    {
+      "label": "GitHub",
+      "url": "https://github.com/example",
+      "iconKey": "github"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://linkedin.com/in/example",
+      "iconKey": "linkedin"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:jane.doe@example.com",
+      "iconKey": "email"
+    },
+    {
+      "label": "Phone",
+      "url": "tel:+15550192834",
+      "iconKey": "phone"
+    }
   ],
   "experiences": [
     {
-      "company": "Tech Corp",
-      "role": "Staff Mobile Engineer",
-      "duration": "2022 - Present",
+      "role": "Staff Mobile Engineer & Technical Lead",
+      "company": "Enterprise Global Technologies",
       "location": "San Francisco, CA",
+      "period": "2022 – Present",
+      "durationText": "Current Role",
       "isCurrent": true,
-      "bullets": [
-        "Led mobile architecture redesign serving 1M+ active users.",
-        "Introduced automated CI/CD reducing release cycle by 50%."
+      "description": "Directing architecture and technical roadmaps for flagship mobile commerce and logistics platforms used by 2M+ monthly active users.",
+      "associatedProjectTitle": "OmniCommerce Mobile",
+      "responsibilities": [
+        "Architected core offline-first database synchronization and reactive state management layer using BLoC.",
+        "Reduced app launch latency by 45% and decreased crash-free user rate to 99.94%.",
+        "Mentored a distributed team of 12 mobile developers across iOS and Android squads.",
+        "Engineered automated GitHub Actions CI/CD pipeline cutting release turnaround from 5 days to 4 hours."
       ],
-      "technologies": ["Flutter", "Dart", "Swift", "CI/CD"]
+      "impact": [
+        "2M+ Monthly Active Users",
+        "45% Faster App Cold Start",
+        "99.94% Crash-Free Sessions"
+      ],
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "Swift",
+        "BLoC",
+        "Clean Architecture",
+        "Firebase",
+        "CI/CD"
+      ]
+    },
+    {
+      "role": "Senior iOS & Flutter Developer",
+      "company": "NextGen Digital Solutions",
+      "location": "New York, NY (Remote)",
+      "period": "2019 – 2022",
+      "durationText": "3 Years",
+      "isCurrent": false,
+      "description": "Engineered enterprise healthcare and fintech client applications with strict compliance and high data reliability.",
+      "associatedProjectTitle": "HealthPulse Care Portal",
+      "responsibilities": [
+        "Delivered native iOS and cross-platform healthcare app compliant with HIPAA regulations and biometric authentication.",
+        "Implemented custom design system widgets ensuring 100% brand consistency and WCAG AAA accessibility.",
+        "Integrated encrypted local cache and Bluetooth medical telemetry device streaming."
+      ],
+      "impact": [
+        "500K+ Clinical Users",
+        "Zero Security Vulnerabilities in 3 Audits",
+        "4.8★ Rating on App Store"
+      ],
+      "technologies": [
+        "Swift",
+        "SwiftUI",
+        "Flutter",
+        "Combine",
+        "Bluetooth LE",
+        "REST APIs"
+      ]
     }
   ],
   "projects": [
     {
-      "title": "Mobile App Example",
-      "tagline": "High-performance enterprise utility",
-      "description": "A cross-platform mobile app built using Clean Architecture and state management.",
-      "category": "Flutter",
-      "technologies": ["Flutter", "Dart", "Firebase"],
-      "metrics": ["500K+ Downloads", "4.8★ Rating"],
+      "title": "OmniCommerce Mobile",
+      "client": "Global Retail Group",
+      "duration": "14 Months",
+      "category": "Enterprise",
+      "isFeatured": true,
+      "overview": "Flagship omnichannel retail application integrating barcode scanning, store navigation, and real-time inventory synchronization for enterprise store chains.",
+      "features": [
+        "Real-time product inventory lookup and interactive in-store aisle maps",
+        "One-touch checkout with Apple Pay, Google Pay, and gift card balance management",
+        "Biometric customer identification and frictionless click-and-collect fulfillment",
+        "Dynamic personalized product recommendation engine powered by ML edge models"
+      ],
+      "userPersonas": [
+        "Retail Shopper",
+        "Store Associate",
+        "Inventory Manager"
+      ],
+      "technologies": [
+        "Flutter",
+        "Dart",
+        "BLoC",
+        "REST APIs",
+        "Firebase",
+        "Apple Pay"
+      ],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "problem": "Legacy hybrid solution suffered from severe UI stutters, slow search response times exceeding 4 seconds, and frequent synchronization failures during peak seasonal traffic.",
+      "solution": "Architected a reactive Flutter application using Clean Architecture, localized SQLite caching, and optimistic UI mutations for instant feedback.",
+      "roleDescription": "Lead Architect overseeing core mobile foundation, checkout security, and high-frequency real-time stock sync modules.",
+      "architectureSteps": [
+        "Clean Architecture separating Domain, Data, and Presentation layers",
+        "Repository pattern with local encrypted SQLite cache and fallback strategies",
+        "Predictive cache pre-fetching for high-volume store categories",
+        "Automated regression test suite covering 85%+ business logic"
+      ],
+      "challenges": [
+        {
+          "challenge": "High latency network environments inside concrete retail store basements.",
+          "resolution": "Built an offline-first transactional queue syncing store data seamlessly once connection restores."
+        },
+        {
+          "challenge": "Frictionless multi-tender checkout with strict PCI compliance.",
+          "resolution": "Isolated payment tokens in platform-native Secure Enclaves using native Flutter method channels."
+        }
+      ],
+      "impactMetrics": [
+        {
+          "metric": "1M+",
+          "label": "Active Users"
+        },
+        {
+          "metric": "4.8★",
+          "label": "Store Rating"
+        },
+        {
+          "metric": "-65%",
+          "label": "Checkout Latency"
+        }
+      ],
       "links": {
-        "github": "https://github.com/example/app"
+        "web": "https://example.com/omnicommerce",
+        "ios": "https://apps.apple.com",
+        "android": "https://play.google.com",
+        "github": "https://github.com/example/omnicommerce"
+      }
+    },
+    {
+      "title": "HealthPulse Care Portal",
+      "client": "National Health Network",
+      "duration": "10 Months",
+      "category": "Health",
+      "isFeatured": true,
+      "overview": "Secure patient engagement and telehealth consultation platform connecting patients with clinicians and remote vital monitoring devices.",
+      "features": [
+        "Encrypted WebRTC high-definition video consultations with board-certified physicians",
+        "Automated vital streaming via Bluetooth low-energy blood pressure and pulse oximeter monitors",
+        "Interactive medication reminders and pharmacy delivery tracking",
+        "Direct end-to-end encrypted messaging with clinical care teams"
+      ],
+      "userPersonas": [
+        "Chronic Care Patient",
+        "Attending Physician",
+        "Care Coordinator"
+      ],
+      "technologies": [
+        "Flutter",
+        "Swift",
+        "WebRTC",
+        "Bluetooth LE",
+        "Biometrics",
+        "HIPAA"
+      ],
+      "platforms": [
+        "iOS",
+        "Android"
+      ],
+      "problem": "Patients lacked a unified, intuitive mobile portal to connect their wearable health sensors and schedule remote specialist care without lengthy phone queues.",
+      "solution": "Built an accessible, WCAG AAA compliant mobile application featuring one-tap WebRTC appointments and automated BLE sensor background sync.",
+      "roleDescription": "Senior Mobile Developer leading HIPAA security architecture, WebRTC video integration, and Bluetooth sensor pairing protocols.",
+      "architectureSteps": [
+        "Custom platform channels bridging iOS CoreBluetooth and Android BluetoothGatt",
+        "Strict end-to-end payload encryption conforming to HIPAA specifications",
+        "Reactive clinical dashboard adapting layout dynamically across tablets and phones",
+        "Automated memory leak detection and background battery optimization"
+      ],
+      "challenges": [
+        {
+          "challenge": "Inconsistent Bluetooth packet delivery across varied Android vendor chipsets.",
+          "resolution": "Implemented an adaptive connection interval handshake with exponential retry backoff."
+        },
+        {
+          "challenge": "Bandwidth fluctuations during rural video consultation sessions.",
+          "resolution": "Configured dynamic WebRTC bitrate scaling prioritizing audio clarity under poor signal conditions."
+        }
+      ],
+      "impactMetrics": [
+        {
+          "metric": "500K+",
+          "label": "Telehealth Visits"
+        },
+        {
+          "metric": "99.99%",
+          "label": "Uptime"
+        },
+        {
+          "metric": "<120ms",
+          "label": "BLE Sync Latency"
+        }
+      ],
+      "links": {
+        "web": "https://example.com/healthpulse",
+        "ios": "https://apps.apple.com",
+        "android": "https://play.google.com"
       }
     }
   ],
   "skillGroups": [
     {
-      "category": "Mobile Technologies",
+      "categoryName": "Mobile & Core Frameworks",
+      "description": "Primary languages, architectures, and native operating systems",
       "skills": [
-        { "name": "Flutter & Dart", "level": "Expert" },
-        { "name": "iOS (Swift / SwiftUI)", "level": "Advanced" }
+        {
+          "name": "Flutter & Dart",
+          "level": "Expert"
+        },
+        {
+          "name": "iOS (Swift & SwiftUI)",
+          "level": "Expert"
+        },
+        {
+          "name": "Clean Architecture",
+          "level": "Expert"
+        },
+        {
+          "name": "BLoC / Cubit / Riverpod",
+          "level": "Expert"
+        },
+        {
+          "name": "Android (Kotlin)",
+          "level": "Advanced"
+        },
+        {
+          "name": "Reactive Programming",
+          "level": "Advanced"
+        }
       ]
+    },
+    {
+      "categoryName": "Cloud, APIs & Tooling",
+      "description": "Backend services, database synchronization, and CI/CD pipelines",
+      "skills": [
+        {
+          "name": "Firebase & Cloud Firestore",
+          "level": "Expert"
+        },
+        {
+          "name": "REST & GraphQL APIs",
+          "level": "Expert"
+        },
+        {
+          "name": "GitHub Actions CI/CD",
+          "level": "Expert"
+        },
+        {
+          "name": "Fastlane & App Distribution",
+          "level": "Advanced"
+        },
+        {
+          "name": "Git & Code Review Workflows",
+          "level": "Expert"
+        },
+        {
+          "name": "Unit & Integration Testing",
+          "level": "Expert"
+        }
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Enterprise Scale Delivery",
+      "description": "Successfully architected and shipped high-performance applications serving over 2 million monthly active users across international markets.",
+      "metricBadge": "2M+ Active Users",
+      "iconName": "corporate_fare"
+    },
+    {
+      "title": "Engineering Leadership & Mentorship",
+      "description": "Mentored 15+ mobile engineers in Clean Architecture, reactive design patterns, and automated testing best practices.",
+      "metricBadge": "15+ Engineers Mentored",
+      "iconName": "groups"
+    },
+    {
+      "title": "Design System & Accessibility",
+      "description": "Standardized a reusable component library reducing feature delivery time by 35% while achieving WCAG AAA accessibility.",
+      "metricBadge": "-35% Dev Cycle",
+      "iconName": "design_services"
     }
   ],
   "education": [
     {
-      "degree": "B.S. in Computer Science",
-      "institution": "University of Technology",
-      "duration": "2014 - 2018"
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "University of California, Berkeley",
+      "year": "2014 – 2018",
+      "details": "Focused on Distributed Systems, Algorithms, and Human-Computer Interaction. Graduated with Honors."
     }
   ],
-  "certifications": [],
-  "achievements": []
+  "certifications": [
+    {
+      "title": "Google Certified Professional Mobile Architect",
+      "description": "Advanced certification recognizing mastery in scalable mobile app architecture, performance optimization, and enterprise deployments.",
+      "issuer": "Google",
+      "credentialUrl": "https://example.com/cert/mobile-architect"
+    },
+    {
+      "title": "Apple Certified iOS Developer",
+      "description": "Credential validating expert understanding of iOS SDK, SwiftUI, memory management, and App Store guidelines.",
+      "issuer": "Apple",
+      "credentialUrl": "https://example.com/cert/ios-developer"
+    }
+  ]
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/constants/app_constants.dart';
 import '../../../domain/entities/achievement.dart';
 import '../../../domain/entities/certification.dart';
 import '../../../domain/entities/education.dart';
@@ -13,6 +14,7 @@ import '../../../domain/entities/skill_group.dart';
 import '../../../domain/entities/social_link.dart';
 import '../../bloc/portfolio_cubit.dart';
 import '../../bloc/portfolio_state.dart';
+import 'package:portfolio/shared/components/profile_avatar.dart';
 
 /// Comprehensive Admin Dashboard allowing the owner (`suhail7.dev@gmail.com`)
 /// to update any existing record and add new records across all sections.
@@ -376,10 +378,26 @@ class _AdminDashboardPageState extends State<AdminDashboardPage>
               ),
               const SizedBox(height: 16),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(child: _buildTextField('Profile Image Asset/URL', _avatarController)),
+                  Expanded(
+                    child: _buildTextField(
+                      'Profile Image Asset/URL (e.g. ${AppConstants.profilePic}, or comma-separated)',
+                      _avatarController,
+                    ),
+                  ),
                   const SizedBox(width: 16),
                   Expanded(child: _buildTextField('Resume Download URL', _resumeController)),
+                  const SizedBox(width: 16),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 24),
+                    child: ProfileAvatar(
+                      name: _nameController.text.isEmpty ? 'SS' : _nameController.text,
+                      profileImageUrl: _avatarController.text,
+                      size: 52,
+                      allowCycleOnClick: true,
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 16),

@@ -8,6 +8,8 @@ import 'package:portfolio/features/portfolio/domain/entities/project.dart';
 import 'package:portfolio/shared/components/badge_pill.dart';
 import 'package:portfolio/shared/components/gradient_button.dart';
 
+import 'project_case_study_dialog.dart';
+
 /// Comprehensive modal dialog for in-depth project details, user personas, and feature lists.
 class ProjectDetailDialog extends StatelessWidget {
   final Project project;
@@ -15,11 +17,7 @@ class ProjectDetailDialog extends StatelessWidget {
   const ProjectDetailDialog({super.key, required this.project});
 
   static Future<void> show(BuildContext context, Project project) {
-    return showDialog(
-      context: context,
-      barrierDismissible: true,
-      builder: (context) => ProjectDetailDialog(project: project),
-    );
+    return ProjectCaseStudyDialog.show(context, project);
   }
 
   @override

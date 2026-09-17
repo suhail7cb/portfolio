@@ -103,65 +103,77 @@ Allows you to dynamically enable or disable any section of the website. If you d
 | `location` | String | Optional | City, Country or "Remote". |
 | `email` | String | **Required** | Your primary contact email address. |
 | `phone` | String | Optional | Your phone number with country code. |
-| `totalExperience` | String | Optional | Summary badge (e.g., "10 Years in Mobile Development"). |
+| `totalExperience` | String | Optional | Summary badge (e.g., "10+ Years in Mobile Development"). |
 | `professionalSummary` | String | Optional | Executive overview paragraph. |
 | `highlights` | Array of Strings | Optional | 4–6 bullet items shown in the "What I Bring to the Table" grid. |
 | `professionalDevelopmentSummary` | String | Optional | Narrative detailing your career journey and impact. |
-| `profileImageUrl` | String or `null` | Optional | Path to image in `assets/images/` or external HTTPS URL. |
-| `resumeDownloadUrl` | String or `null` | Optional | Direct link to your downloadable PDF resume. |
+| `profileImageUrl` | String or `null` | Optional | Set to `null` to randomly rotate photos from `assets/images/profile_*.jpeg` via `AppConstants.profilePic`, or specify an explicit image asset path / external HTTPS URL. |
+| `resumeDownloadUrl` | String or `null` | Optional | Direct link to resume. Supports local asset paths (e.g. `"assets/resume/Suhail_Shabir.docx"`) triggering native browser download via `FileDownloader`, or external download URLs. |
 
 **Example:**
 ```json
 "personalInfo": {
   "name": "Jane Doe",
-  "title": "Senior Flutter Developer",
-  "tagline": "Building delightful cross-platform mobile experiences",
+  "title": "Staff Mobile Engineer (iOS & Flutter)",
+  "tagline": "Building scalable iOS & Flutter products with clean architecture, great UX, and real-world impact.",
   "location": "San Francisco, CA",
-  "email": "jane@example.com",
-  "phone": "+1 555-0199",
-  "totalExperience": "8 Years in Software Development",
-  "professionalSummary": "Passionate software engineer specializing in Flutter and mobile architecture...",
+  "email": "jane.doe@example.com",
+  "phone": "+1 (555) 019-2834",
+  "totalExperience": "10+ Years in Mobile Development",
+  "professionalSummary": "Accomplished mobile software engineer and technical leader with over a decade of experience engineering resilient, high-volume mobile systems...",
   "highlights": [
-    "Expert in Flutter, Dart, BLoC, and Clean Architecture",
-    "Strong eye for UI/UX micro-interactions and accessibility",
-    "Proven team leadership and mentor"
+    "Expert-level proficiency in Swift, SwiftUI, Flutter, Dart, and Clean Architecture",
+    "Strong focus on UX polish, smooth 60fps animations, and accessibility",
+    "Proven technical leadership, architecture reviews, and team mentorship"
   ],
-  "professionalDevelopmentSummary": "Over the past 8 years, I have helped startups and enterprises launch...",
+  "professionalDevelopmentSummary": "Over the past decade, my engineering journey has spanned high-growth startups and Fortune 500 enterprises...",
   "profileImageUrl": null,
-  "resumeDownloadUrl": "https://example.com/resume.pdf"
+  "resumeDownloadUrl": "assets/resume/Suhail_Shabir.docx"
 }
 ```
 
 ---
 
-### 4. `experiences` (Work History)
+### 4. `experiences` (Work History & Interactive Timeline)
 
-An array of past roles displayed chronologically as an interactive vertical timeline.
+An array of past roles displayed chronologically as an interactive timeline with focus cards and dual view mode (Timeline / Cards).
 
 | Field | Type | Required | Description |
 | :--- | :--- | :--- | :--- |
 | `role` | String | **Required** | Job title / position name. |
 | `company` | String | **Required** | Company or organization name. |
-| `location` | String | Optional | Location (e.g., "Noida, India", "Remote"). |
-| `period` | String | **Required** | Timeframe (e.g., "June 2025 – Present"). |
-| `durationText` | String | Optional | Badge text (e.g., "Current", "2 years 10 months"). |
+| `location` | String | Optional | Location (e.g., "San Francisco, CA", "Remote"). |
+| `period` | String | **Required** | Timeframe (e.g., "2022 – Present"). |
+| `durationText` | String | Optional | Badge text (e.g., "Current Role", "3 Years"). |
 | `isCurrent` | Boolean | Optional | Set `true` to highlight the role as current with an active status glow. |
-| `responsibilities` | Array of Strings | Optional | Key contributions, achievements, and responsibilities. |
+| `description` | String | Optional | High-level summary of responsibilities and scope. |
+| `associatedProjectTitle` | String | Optional | Title of a project from `projects` linked to this role. |
+| `responsibilities` | Array of Strings | Optional | Key contributions, technical milestones, and team achievements. |
+| `impact` | Array of Strings | Optional | Measurable outcome badges (e.g. `["2M+ Active Users", "45% Faster Startup"]`). |
+| `technologies` | Array of Strings | Optional | Tech stack tags (e.g. `["Flutter", "Swift", "Clean Architecture"]`). |
 
 **How to add a new job experience:**
 ```json
 {
-  "role": "Staff Mobile Engineer",
-  "company": "Acme Corp",
-  "location": "New York, NY (Remote)",
-  "period": "Jan 2024 – Present",
-  "durationText": "Current",
+  "role": "Staff Mobile Engineer & Technical Lead",
+  "company": "Enterprise Global Technologies",
+  "location": "San Francisco, CA",
+  "period": "2022 – Present",
+  "durationText": "Current Role",
   "isCurrent": true,
+  "description": "Directing architecture and technical roadmaps for flagship mobile platforms used by 2M+ monthly active users.",
+  "associatedProjectTitle": "OmniCommerce Mobile",
   "responsibilities": [
-    "Led cross-platform mobile architecture across iOS and Android.",
-    "Mentored 6 junior and mid-level engineers.",
-    "Improved cold app startup speed by 42%."
-  ]
+    "Architected core offline-first database synchronization and reactive state management.",
+    "Reduced app launch latency by 45% and improved crash-free rate to 99.94%.",
+    "Mentored a distributed team of 12 mobile developers across iOS and Android squads."
+  ],
+  "impact": [
+    "2M+ Monthly Active Users",
+    "45% Faster App Cold Start",
+    "99.94% Crash-Free Sessions"
+  ],
+  "technologies": ["Flutter", "Dart", "Swift", "BLoC", "Clean Architecture", "CI/CD"]
 }
 ```
 
@@ -177,12 +189,18 @@ An array of projects displayed in the interactive filterable grid.
 | `client` | String or `null` | Optional | Client or employer name. |
 | `duration` | String or `null` | Optional | Project duration (e.g. "6 Months", "14 Months"). |
 | `isFeatured` | Boolean | Optional | Set `true` to show this project when the "Featured" filter tab is selected. |
-| `category` | String | Optional | Category used for filter tabs (e.g., "Retail & Logistics", "E-Commerce", "Fintech & Blockchain", "Healthcare"). |
-| `overview` | String | Optional | Project overview description. |
-| `features` | Array of Strings | Optional | Detailed list of features shown in the project detail dialog. |
-| `userPersonas` | Array of Strings | Optional | User personas targeted by the application (e.g. "Store Manager", "Shopper"). |
-| `technologies` | Array of Strings | Optional | Tech stack tags (e.g. ["Flutter", "Swift", "REST APIs"]). |
-| `platforms` | Array of Strings | Optional | Platform badges (e.g. ["iOS App Store", "Google Play Store"]). |
+| `category` | String | Optional | Category used for filter tabs (e.g., "Enterprise", "Fintech", "Health", "Others"). |
+| `overview` | String | Optional | Executive summary of the application. |
+| `features` | Array of Strings | Optional | Feature highlights displayed in the Case Study dialog. |
+| `userPersonas` | Array of Strings | Optional | Target audience personas (e.g. `["Store Manager", "Shopper"]`). |
+| `technologies` | Array of Strings | Optional | Tech stack tags (e.g. `["Flutter", "Swift", "REST APIs"]`). |
+| `platforms` | Array of Strings | Optional | Platform badges (e.g. `["iOS", "Android"]`). |
+| `problem` | String | Optional | Core problem statement or business challenge addressed. |
+| `solution` | String | Optional | Technical and product solution delivered. |
+| `roleDescription` | String | Optional | Your role and responsibilities on the project. |
+| `architectureSteps` | Array of Strings | Optional | Key architecture decisions and design patterns utilized. |
+| `challenges` | Array of Objects | Optional | Challenges faced and how you overcame them (`[{"challenge": "...", "resolution": "..."}]`). |
+| `impactMetrics` | Array of Objects | Optional | Highlighting quantitative metrics (`[{"metric": "1M+", "label": "Active Users"}]`). |
 | `links` | Object | Optional | Store & Web links (see below). |
 
 #### 🔗 Platform Store & Code Links (`links` object):
@@ -199,24 +217,40 @@ An array of projects displayed in the interactive filterable grid.
 **How to add a new project:**
 ```json
 {
-  "title": "SwiftRide - Mobility App",
-  "client": "Urban Transit Co.",
-  "duration": "12 Months",
+  "title": "OmniCommerce Mobile",
+  "client": "Global Retail Group",
+  "duration": "14 Months",
+  "category": "Enterprise",
   "isFeatured": true,
-  "category": "Mobility & Transport",
-  "overview": "Next-generation ride-booking app built with Flutter and real-time WebSockets.",
+  "overview": "Flagship omnichannel retail application integrating barcode scanning and inventory sync.",
   "features": [
-    "Live driver GPS tracking with smooth map animations",
-    "Split fare calculation and in-app wallet",
-    "Push notifications for arrival status"
+    "Real-time product inventory lookup and interactive in-store maps",
+    "One-touch checkout with Apple Pay and Google Pay"
   ],
-  "userPersonas": ["Passenger", "Driver"],
-  "technologies": ["Flutter", "Dart", "Google Maps SDK", "Firebase"],
-  "platforms": ["iOS App Store", "Google Play Store"],
+  "userPersonas": ["Retail Shopper", "Store Associate"],
+  "technologies": ["Flutter", "Dart", "BLoC", "REST APIs", "Apple Pay"],
+  "platforms": ["iOS", "Android"],
+  "problem": "Legacy hybrid app suffered from slow checkout and frequent sync failures.",
+  "solution": "Architected a reactive Flutter app with localized SQLite caching and optimistic UI.",
+  "roleDescription": "Lead Architect overseeing mobile foundation and payment integration.",
+  "architectureSteps": [
+    "Clean Architecture separating Domain, Data, and Presentation layers",
+    "Predictive cache pre-fetching for high-volume store categories"
+  ],
+  "challenges": [
+    {
+      "challenge": "High latency in concrete store basements.",
+      "resolution": "Built an offline-first transactional sync queue."
+    }
+  ],
+  "impactMetrics": [
+    { "metric": "1M+", "label": "Active Users" },
+    { "metric": "4.8★", "label": "Store Rating" }
+  ],
   "links": {
-    "web": "https://swiftride.example.com",
-    "android": "https://play.google.com/store/apps/details?id=com.swiftride.app",
-    "ios": "https://apps.apple.com/app/swiftride/id123456789",
+    "web": "https://example.com/omnicommerce",
+    "android": "https://play.google.com/store/apps/details?id=com.example.app",
+    "ios": "https://apps.apple.com/app/id123456789",
     "github": null
   }
 }
