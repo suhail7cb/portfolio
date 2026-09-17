@@ -17,6 +17,7 @@ class PortfolioNavBar extends StatelessWidget {
   final String activeSectionKey;
   final void Function(String sectionKey) onNavTap;
   final VoidCallback onOpenDrawer;
+  final ScrollController? scrollController;
 
   const PortfolioNavBar({
     super.key,
@@ -25,13 +26,37 @@ class PortfolioNavBar extends StatelessWidget {
     required this.activeSectionKey,
     required this.onNavTap,
     required this.onOpenDrawer,
+    this.scrollController,
   });
 
   @override
   Widget build(BuildContext context) {
+    if (scrollController != null) {
+      return ListenableBuilder(
+        listenable: scrollController!,
+        builder: (context, _) {
+          final double scrollOffset = scrollController!.hasClients
+              ? scrollController!.offset
+              : 0.0;
+          return _buildNavBarContent(context, scrollOffset);
+        },
+      );
+    }
+    return _buildNavBarContent(context, 0.0);
+  }
+
+  Widget _buildNavBarContent(BuildContext context, double scrollOffset) {
     final bool isDark = context.isDarkMode;
     final bool isMobile = ResponsiveBuilder.isMobile(context);
     final themeCubit = context.watch<ThemeCubit>();
+
+    // Scroll progress as user scrolls down (0.0 at top to 2.0 as user scrolls past 180px)
+    final double scrollProgress = (scrollOffset / 180.0).clamp(0.0, 2.0);
+    final double avatarSize = isMobile
+        ? (36.0 + scrollProgress * 4.0)
+        : (38.0 + scrollProgress * 8.0);
+    final double borderAlpha = 0.7 + (scrollProgress * 0.3);
+    final double shadowAlpha = 0.25 + (scrollProgress * 0.35);
 
     return ClipRRect(
       child: BackdropFilter(
@@ -56,43 +81,84 @@ class PortfolioNavBar extends StatelessWidget {
           ),
           child: Row(
             children: [
-              // Brand Logo / Initials
+              // Brand: Picture, Name & Role (Always on top across the entire page)
               MouseRegion(
                 cursor: SystemMouseCursors.click,
                 child: GestureDetector(
                   onTap: () => onNavTap('hero'),
                   child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
+                      // Resized Profile Picture: Remains permanently at top even when at bottom of page
                       Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 6,
-                        ),
+                        width: avatarSize,
+                        height: avatarSize,
                         decoration: BoxDecoration(
-                          gradient: AppColors.primaryGradient,
-                          borderRadius: BorderRadius.circular(
-                            AppDimensions.radiusS,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: AppColors.primary.withValues(
+                              alpha: borderAlpha,
+                            ),
+                            width: 1.5 + (scrollProgress * 0.5),
                           ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withValues(
+                                alpha: shadowAlpha,
+                              ),
+                              blurRadius: 8.0 + (scrollProgress * 6.0),
+                            ),
+                          ],
                         ),
-                        child: Text(
-                          _getInitials(personalInfo.name),
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w800,
-                            fontSize: 14,
-                            letterSpacing: 0.5,
+                        child: ClipOval(
+                          child: Image.asset(
+                            personalInfo.profileImageUrl ??
+                                'assets/images/profile.jpeg',
+                            fit: BoxFit.cover,
+                            alignment: Alignment.topCenter,
+                            errorBuilder: (_, __, ___) => Container(
+                              decoration: const BoxDecoration(
+                                gradient: AppColors.primaryGradient,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  _getInitials(personalInfo.name),
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w800,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
                       const SizedBox(width: 10),
-                      Text(
-                        personalInfo.name,
-                        style: context.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w700,
-                          color: isDark
-                              ? Colors.white
-                              : AppColors.lightTextPrimary,
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            personalInfo.name,
+                            style: context.textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w800,
+                              fontSize: isMobile ? 14 : 15.5,
+                              color: isDark
+                                  ? Colors.white
+                                  : AppColors.lightTextPrimary,
+                            ),
+                          ),
+                          Text(
+                            personalInfo.title,
+                            style: TextStyle(
+                              fontSize: isMobile ? 10.5 : 11.5,
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.primary,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -171,7 +237,7 @@ class PortfolioNavBar extends StatelessWidget {
       // return '<${parts.first[0]} />';
       return parts.first[0];
     }
-    return '<SS />';
+    return 'SS';
   }
 }
 
