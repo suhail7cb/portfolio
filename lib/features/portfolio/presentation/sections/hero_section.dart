@@ -8,6 +8,7 @@ import 'package:portfolio/core/responsive/responsive_layout.dart';
 import 'package:portfolio/features/portfolio/domain/entities/personal_info.dart';
 import 'package:portfolio/shared/components/gradient_button.dart';
 import 'package:portfolio/shared/components/glass_container.dart';
+import 'package:portfolio/shared/components/profile_avatar.dart';
 
 /// Hero Section introducing Suhail Shabir with headline, experience badges, and primary CTAs.
 class HeroSection extends StatelessWidget {
@@ -193,31 +194,11 @@ class HeroSection extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Avatar badge
-            Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: AppColors.heroGradient,
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.primary.withValues(alpha: 0.35),
-                    blurRadius: 28,
-                    spreadRadius: 4,
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Text(
-                  'SS',
-                  style: const TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+            // Dynamic Profile Avatar (with multi-photo rotation & SS initials fallback)
+            ProfileAvatar(
+              name: personalInfo.name,
+              profileImageUrl: personalInfo.profileImageUrl,
+              size: 110,
             ),
             const SizedBox(height: 20),
 

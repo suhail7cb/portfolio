@@ -7,6 +7,7 @@ import 'package:portfolio/core/theme/theme_cubit.dart';
 import 'package:portfolio/features/portfolio/domain/entities/navigation_item.dart';
 import 'package:portfolio/features/portfolio/domain/entities/personal_info.dart';
 import 'package:portfolio/shared/components/gradient_button.dart';
+import 'package:portfolio/shared/components/profile_avatar.dart';
 
 /// Mobile slide-in drawer for smooth on-the-go navigation.
 class PortfolioDrawer extends StatelessWidget {
@@ -41,27 +42,34 @@ class PortfolioDrawer extends StatelessWidget {
             children: [
               // Header
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        personalInfo.name,
-                        style: context.textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w700,
-                          color: isDark ? Colors.white : AppColors.lightTextPrimary,
+                  ProfileAvatar(
+                    name: personalInfo.name,
+                    profileImageUrl: personalInfo.profileImageUrl,
+                    size: 46,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          personalInfo.name,
+                          style: context.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: isDark ? Colors.white : AppColors.lightTextPrimary,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        'iOS & Flutter Specialist',
-                        style: context.textTheme.bodySmall?.copyWith(
-                          color: AppColors.primary,
-                          fontWeight: FontWeight.w600,
+                        const SizedBox(height: 2),
+                        Text(
+                          'iOS & Flutter Specialist',
+                          style: context.textTheme.bodySmall?.copyWith(
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   IconButton(
                     icon: const Icon(Icons.close),
