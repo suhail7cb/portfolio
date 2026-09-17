@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/service_locator.dart';
+import 'package:portfolio/core/constants/app_constants.dart';
 import 'package:portfolio/core/theme/theme_cubit.dart';
 import 'package:portfolio/features/portfolio/data/datasources/portfolio_config_loader.dart';
 import 'package:portfolio/features/portfolio/domain/entities/portfolio_config.dart';
@@ -14,8 +15,15 @@ void main() {
   late String portfolioJsonContent;
 
   setUpAll(() {
-    final file = File('assets/config/portfolio.json');
-    portfolioJsonContent = file.readAsStringSync();
+    // Read the private configuration file for testing
+    final File file = File('assets/config/portfolio.json');
+    if (file.existsSync()) {
+      portfolioJsonContent = file.readAsStringSync();
+    } else {
+      // Fallback to sample config
+      portfolioJsonContent =
+          File('assets/config/portfolio.sample.json').readAsStringSync();
+    }
   });
 
   setUp(() {
@@ -30,7 +38,7 @@ void main() {
       expect(config.personalInfo.name, 'Suhail Shabir');
       expect(config.personalInfo.title,
           'Mobile Application Developer (iOS & Flutter)');
-      expect(config.personalInfo.email, 'suhail7.dev@gmail.com');
+      expect(config.personalInfo.email, AppConstants.adminEmail);
       expect(config.personalInfo.phone, '+91 7006401172');
       expect(config.personalInfo.location, 'New Delhi, India');
 

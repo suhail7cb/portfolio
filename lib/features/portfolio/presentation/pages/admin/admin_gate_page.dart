@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/constants/app_constants.dart';
 import 'admin_dashboard_page.dart';
 import 'admin_login_page.dart';
 
@@ -8,7 +9,7 @@ import 'admin_login_page.dart';
 class AdminGatePage extends StatelessWidget {
   const AdminGatePage({super.key});
 
-  static const String authorizedAdminEmail = 'suhail7.dev@gmail.com';
+  static const String authorizedAdminEmail = AppConstants.adminEmail;
 
   @override
   Widget build(BuildContext context) {

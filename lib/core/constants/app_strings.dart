@@ -1,6 +1,11 @@
+import 'app_constants.dart';
+
 /// Centralized UI string constants for labels, accessibility, and fallbacks.
 class AppStrings {
   AppStrings._();
+
+  // Administration & Security
+  static const String adminEmail = AppConstants.adminEmail;
 
   // Navigation
   static const String navAbout = 'About';

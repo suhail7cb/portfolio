@@ -2,8 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/constants/app_constants.dart';
 
-/// Secure Login Page for the Portfolio Owner (`suhail7.dev@gmail.com`).
+/// Secure Login Page for the Portfolio Owner.
 /// Supports one-click Google Sign-In and Email/Password credentials.
 class AdminLoginPage extends StatefulWidget {
   final VoidCallback? onLoginSuccess;
@@ -16,7 +17,7 @@ class AdminLoginPage extends StatefulWidget {
 
 class _AdminLoginPageState extends State<AdminLoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController(text: 'suhail7.dev@gmail.com');
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   bool _isLoading = false;
@@ -50,11 +51,11 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
       final user = credential.user;
 
       if (user == null ||
-          user.email?.toLowerCase() != 'suhail7.dev@gmail.com') {
+          user.email?.toLowerCase() != AppConstants.adminEmail.toLowerCase()) {
         await FirebaseAuth.instance.signOut();
         setState(() {
           _errorMessage =
-              'Access denied. Signed in as "${user?.email ?? 'Unknown'}", but only suhail7.dev@gmail.com is authorized to access this admin panel.';
+              'Access denied. Signed in as "${user?.email ?? 'Unknown'}", but only ${AppConstants.adminEmail} is authorized to access this admin panel.';
           _isGoogleLoading = false;
         });
         return;
@@ -117,11 +118,11 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
 
       final user = credential.user;
       if (user == null ||
-          user.email?.toLowerCase() != 'suhail7.dev@gmail.com') {
+          user.email?.toLowerCase() != AppConstants.adminEmail.toLowerCase()) {
         await FirebaseAuth.instance.signOut();
         setState(() {
           _errorMessage =
-              'Access denied. Only the portfolio owner (suhail7.dev@gmail.com) is authorized.';
+              'Access denied. Only the portfolio owner (${AppConstants.adminEmail}) is authorized.';
           _isLoading = false;
         });
         return;

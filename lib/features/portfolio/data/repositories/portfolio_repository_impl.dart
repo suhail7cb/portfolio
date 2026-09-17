@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:portfolio/core/constants/app_constants.dart';
 import 'package:portfolio/features/portfolio/domain/entities/portfolio_config.dart';
 import 'package:portfolio/features/portfolio/domain/repositories/portfolio_repository.dart';
 import '../datasources/portfolio_local_data_source.dart';
@@ -31,7 +32,8 @@ class PortfolioRepositoryImpl implements PortfolioRepository {
       }
       // If remote document doesn't exist yet, seed in background only if authenticated as owner
       final user = FirebaseAuth.instance.currentUser;
-      if (user != null && user.email?.toLowerCase() == 'suhail7.dev@gmail.com') {
+      if (user != null &&
+          user.email?.toLowerCase() == AppConstants.adminEmail.toLowerCase()) {
         final localConfig = await localDataSource.getPortfolioConfig();
         unawaited(remoteDataSource!.seedInitialData(localConfig));
       }
