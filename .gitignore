@@ -49,6 +49,8 @@ ui-debug.log*
 !.env.example
 assets/config/portfolio.json
 !assets/config/portfolio.sample.json
+assets/resume/*
+!assets/resume/.gitkeep
 
 # Symbolication and Obfuscation
 app.*.symbols
