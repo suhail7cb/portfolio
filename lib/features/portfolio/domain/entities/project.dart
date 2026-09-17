@@ -60,6 +60,13 @@ class Project {
   final ProjectLinks links;
   final bool isFeatured;
   final String? category; // e.g. 'Enterprise', 'E-Commerce', 'Fintech', 'Health'
+  final String? problem;
+  final String? solution;
+  final String? roleDescription;
+  final List<String> architectureSteps;
+  final List<Map<String, String>> challenges;
+  final List<Map<String, String>> impactMetrics;
+  final String? imageUrl;
 
   const Project({
     required this.title,
@@ -77,6 +84,13 @@ class Project {
     String? githubUrl,
     this.isFeatured = false,
     this.category,
+    this.problem,
+    this.solution,
+    this.roleDescription,
+    this.architectureSteps = const [],
+    this.challenges = const [],
+    this.impactMetrics = const [],
+    this.imageUrl,
   }) : _appStoreUrl = appStoreUrl,
        _playStoreUrl = playStoreUrl,
        _liveUrl = liveUrl,
@@ -93,9 +107,128 @@ class Project {
   String? get liveUrl => links.web ?? _liveUrl;
   String? get githubUrl => links.github ?? _githubUrl;
 
+  String get effectiveProblem {
+    if (problem != null && problem!.isNotEmpty) return problem!;
+    if (client != null) {
+      return 'The client ($client) required a reliable, enterprise-grade mobile solution to optimize user workflows, reduce operational friction, and scale across multi-region production environments.';
+    }
+    return 'Required an intuitive, high-performance mobile platform addressing complex user workflows and robust real-time data handling.';
+  }
+
+  String get effectiveSolution {
+    if (solution != null && solution!.isNotEmpty) return solution!;
+    return overview;
+  }
+
+  String get effectiveRoleDescription {
+    if (roleDescription != null && roleDescription!.isNotEmpty) {
+      return roleDescription!;
+    }
+    return 'Architected mobile application layer, implemented clean architecture patterns, spearheaded API integration, and ensured rigorous quality standards.';
+  }
+
+  List<String> get effectiveArchitectureSteps {
+    if (architectureSteps.isNotEmpty) return architectureSteps;
+    return const [
+      'Mobile Client (iOS & Flutter)',
+      'Presentation Layer (BLoC / UI)',
+      'Domain Layer (Use Cases & Entities)',
+      'Data Layer (Repositories & Cache)',
+      'REST APIs & Backend Services',
+    ];
+  }
+
+  List<Map<String, String>> get effectiveImpactMetrics {
+    if (impactMetrics.isNotEmpty) return impactMetrics;
+    if (title.contains('Click & Collect')) {
+      return const [
+        {'value': '50K+', 'label': 'Monthly Active Users'},
+        {'value': '30%', 'label': 'Faster Store Pickup'},
+        {'value': '99.9%', 'label': 'System Availability'},
+      ];
+    } else if (title.contains('Liverpool')) {
+      return const [
+        {'value': '4.7★', 'label': 'App Store Rating'},
+        {'value': 'Millions', 'label': 'Store Customers'},
+        {'value': 'Top Retail', 'label': 'Mexico E-Commerce'},
+      ];
+    } else if (title.contains('Walmart') || title.contains('SDS')) {
+      return const [
+        {'value': 'Enterprise', 'label': 'Walmart Systems'},
+        {'value': 'Zero', 'label': 'Dock Congestion'},
+        {'value': '14 Months', 'label': 'System Delivery'},
+      ];
+    } else if (title.contains('Asset Track')) {
+      return const [
+        {'value': 'Blockchain', 'label': 'Tamper-proof Ledger'},
+        {'value': 'Enterprise', 'label': 'Supply Chain Live'},
+        {'value': '45 Months', 'label': 'Lead Architecture'},
+      ];
+    }
+    return const [
+      {'value': 'Production', 'label': 'Delivered Solution'},
+      {'value': '60 FPS', 'label': 'Fluid UX Performance'},
+      {'value': 'Clean Code', 'label': 'Modular Architecture'},
+    ];
+  }
+
+  List<Map<String, String>> get effectiveChallenges {
+    if (challenges.isNotEmpty) return challenges;
+    return const [
+      {
+        'title': 'High-Throughput Concurrency',
+        'description':
+            'Engineered optimized rendering and state pipelines to handle real-time updates and heavy data synchronization without frame drops.',
+      },
+      {
+        'title': 'Offline Resilience',
+        'description':
+            'Implemented local persistence, optimistic UI updates, and intelligent background retry logic for unstable networks.',
+      },
+      {
+        'title': 'Multi-Persona Workflow',
+        'description':
+            'Designed modular screen layouts adapted to distinct internal personas and customer roles, preserving strict role-based data isolation.',
+      },
+    ];
+  }
+
   factory Project.fromJson(Map<String, dynamic> json) {
     final rawLinks = json['links'] as Map<String, dynamic>?;
     final parsedLinks = ProjectLinks.fromJson(rawLinks);
+
+    // Parse challenges if present
+    final rawChallenges = json['challenges'] as List<dynamic>?;
+    final List<Map<String, String>> parsedChallenges = [];
+    if (rawChallenges != null) {
+      for (final item in rawChallenges) {
+        if (item is Map) {
+          parsedChallenges.add({
+            'title': item['title']?.toString() ?? '',
+            'description': item['description']?.toString() ?? '',
+          });
+        }
+      }
+    }
+
+    // Parse impact metrics if present
+    final rawMetrics = json['impactMetrics'] as List<dynamic>?;
+    final List<Map<String, String>> parsedMetrics = [];
+    if (rawMetrics != null) {
+      for (final item in rawMetrics) {
+        if (item is Map) {
+          parsedMetrics.add({
+            'value': item['value']?.toString() ?? '',
+            'label': item['label']?.toString() ?? '',
+          });
+        }
+      }
+    }
+
+    // Parse architecture steps
+    final rawSteps = json['architectureSteps'] as List<dynamic>?;
+    final List<String> parsedSteps =
+        rawSteps?.map((e) => e.toString()).toList() ?? const [];
 
     return Project(
       title: json['title'] as String? ?? 'Untitled Project',
@@ -125,6 +258,13 @@ class Project {
       githubUrl: parsedLinks.github ?? json['githubUrl'] as String?,
       isFeatured: json['isFeatured'] as bool? ?? false,
       category: json['category'] as String?,
+      problem: json['problem'] as String?,
+      solution: json['solution'] as String?,
+      roleDescription: json['roleDescription'] as String?,
+      architectureSteps: parsedSteps,
+      challenges: parsedChallenges,
+      impactMetrics: parsedMetrics,
+      imageUrl: json['imageUrl'] as String?,
     );
   }
 
@@ -140,5 +280,14 @@ class Project {
         'links': links.toJson(),
         'isFeatured': isFeatured,
         if (category != null) 'category': category,
+        if (problem != null) 'problem': problem,
+        if (solution != null) 'solution': solution,
+        if (roleDescription != null) 'roleDescription': roleDescription,
+        if (architectureSteps.isNotEmpty)
+          'architectureSteps': architectureSteps,
+        if (challenges.isNotEmpty) 'challenges': challenges,
+        if (impactMetrics.isNotEmpty) 'impactMetrics': impactMetrics,
+        if (imageUrl != null) 'imageUrl': imageUrl,
       };
 }
+
