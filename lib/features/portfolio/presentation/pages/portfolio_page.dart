@@ -201,6 +201,8 @@ class _PortfolioPageState extends State<PortfolioPage> {
                         key: _experienceKey,
                         child: ExperienceSection(
                           experiences: config.experiences,
+                          onNavigateToProject: (projectTitle) =>
+                              _scrollToSection('projects'),
                         ),
                       ),
 

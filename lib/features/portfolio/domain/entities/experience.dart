@@ -7,6 +7,10 @@ class Experience {
   final String? durationText;
   final bool isCurrent;
   final List<String> responsibilities;
+  final String? description;
+  final List<String> technologies;
+  final List<String> impact;
+  final String? associatedProjectTitle;
 
   const Experience({
     required this.role,
@@ -16,6 +20,10 @@ class Experience {
     this.durationText,
     this.isCurrent = false,
     required this.responsibilities,
+    this.description,
+    this.technologies = const [],
+    this.impact = const [],
+    this.associatedProjectTitle,
   });
 
   factory Experience.fromJson(Map<String, dynamic> json) {
@@ -30,12 +38,26 @@ class Experience {
     }
 
     // Support either 'responsibilities' or 'description'
-    final rawResponsibilities = json['responsibilities'] ?? json['description'];
+    final rawResponsibilities = json['responsibilities'];
     final List<String> respList = [];
     if (rawResponsibilities is List) {
       respList.addAll(rawResponsibilities.map((e) => e.toString()));
     } else if (rawResponsibilities is String && rawResponsibilities.isNotEmpty) {
       respList.add(rawResponsibilities);
+    }
+
+    // Technologies tags
+    final rawTech = json['technologies'];
+    final List<String> techList = [];
+    if (rawTech is List) {
+      techList.addAll(rawTech.map((e) => e.toString()));
+    }
+
+    // Measurable impact points
+    final rawImpact = json['impact'];
+    final List<String> impactList = [];
+    if (rawImpact is List) {
+      impactList.addAll(rawImpact.map((e) => e.toString()));
     }
 
     return Experience(
@@ -46,6 +68,10 @@ class Experience {
       durationText: json['durationText'] as String?,
       isCurrent: json['isCurrent'] as bool? ?? false,
       responsibilities: respList,
+      description: json['description'] as String?,
+      technologies: techList,
+      impact: impactList,
+      associatedProjectTitle: json['associatedProjectTitle'] as String?,
     );
   }
 
@@ -57,5 +83,10 @@ class Experience {
         if (durationText != null) 'durationText': durationText,
         'isCurrent': isCurrent,
         'responsibilities': responsibilities,
+        if (description != null) 'description': description,
+        if (technologies.isNotEmpty) 'technologies': technologies,
+        if (impact.isNotEmpty) 'impact': impact,
+        if (associatedProjectTitle != null)
+          'associatedProjectTitle': associatedProjectTitle,
       };
 }
