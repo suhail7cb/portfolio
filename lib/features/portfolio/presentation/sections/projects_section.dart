@@ -30,6 +30,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
     'Enterprise Logistics',
     'Fintech & Blockchain',
     'Health & IoT',
+    'Others',
   ];
 
   @override
