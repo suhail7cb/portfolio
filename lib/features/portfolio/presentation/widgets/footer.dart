@@ -97,7 +97,8 @@ class PortfolioFooter extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'Built with Flutter Clean Architecture',
+                        // 'Built with Flutter Clean Architecture',
+                        '',
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
@@ -114,7 +115,8 @@ class PortfolioFooter extends StatelessWidget {
                             ? AppColors.darkTextMuted.withValues(alpha: 0.5)
                             : AppColors.lightTextMuted.withValues(alpha: 0.5),
                         hoverColor: AppColors.primary.withValues(alpha: 0.15),
-                        onPressed: () => Navigator.of(context).pushNamed('/admin'),
+                        onPressed: () =>
+                            Navigator.of(context).pushNamed('/admin'),
                       ),
                     ],
                   ),

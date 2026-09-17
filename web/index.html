@@ -54,6 +54,7 @@
       height: 100vh;
       color: #00E5FF;
       background: #0A0D14;
+      transition: opacity 0.3s ease-out;
     }
     .spinner {
       width: 44px;
@@ -73,6 +74,21 @@
     <div class="spinner"></div>
     <p style="margin-top: 18px; font-size: 14px; letter-spacing: 0.5px; color: #94A3B8;">Loading Suhail Shabir Portfolio...</p>
   </div>
+  <script>
+    function removeLoader() {
+      var el = document.getElementById('loading-indicator');
+      if (el) {
+        el.style.opacity = '0';
+        setTimeout(function() {
+          if (el && el.parentNode) {
+            el.parentNode.removeChild(el);
+          }
+        }, 300);
+      }
+    }
+    window.addEventListener('flutter-first-frame', removeLoader);
+    setTimeout(removeLoader, 3500);
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

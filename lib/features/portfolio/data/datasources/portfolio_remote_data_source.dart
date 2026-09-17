@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:portfolio/core/constants/app_constants.dart';
 import '../../domain/entities/portfolio_config.dart';
 
 /// Remote data source responsible for persisting and fetching portfolio configuration
@@ -61,11 +62,12 @@ class PortfolioRemoteDataSource {
   }
 
   /// Seeds initial portfolio configuration to Cloud Firestore if no document exists yet.
-  /// Only executes if authenticated as the portfolio owner (suhail7.dev@gmail.com).
+  /// Only executes if authenticated as the portfolio owner.
   Future<void> seedInitialData(PortfolioConfig config) async {
     try {
       final user = FirebaseAuth.instance.currentUser;
-      if (user == null || user.email?.toLowerCase() != 'suhail7.dev@gmail.com') {
+      if (user == null ||
+          user.email?.toLowerCase() != AppConstants.adminEmail.toLowerCase()) {
         return; // Public visitors do not write to Firestore
       }
 
